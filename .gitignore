@@ -57,3 +57,5 @@ Desktop.ini
 # Docker
 *.dockerfile
 docker-compose.override.yml
+
+test/settings.py
