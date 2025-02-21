@@ -46,3 +46,26 @@ class VkDateApi:
 
         jsn = json.loads(response.text)
         return jsn
+
+    def send_message(self, message):
+        r = self.__make_send_message_request(message)
+        self.__send_send_message_request(r)
+
+    def __make_send_message_request(self, message):
+        fields = {
+            "user_id": message['user_id'],
+            "text": message['text'],
+            "_token": self.token,
+            "_v": "1.13",
+        }
+
+        return {
+            'url':"https://dating.vk.com/api/messenger.send",
+            'headers':{"content-type":MultipartEncoder(fields=fields, boundary="----WebKitFormBoundaryVCgv4x0LhAoyptwt").content_type},
+            'data':MultipartEncoder(fields=fields, boundary="----WebKitFormBoundaryVCgv4x0LhAoyptwt")
+        }
+
+    def __send_send_message_request(self, r):
+        response = requests.post(r['url'], headers=r['headers'], data=r['data'])
+        if not response.ok:
+            raise Exception(response.text + str(response.status_code))
