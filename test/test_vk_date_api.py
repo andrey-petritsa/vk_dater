@@ -22,3 +22,8 @@ def test_send_message():
 
 def get_random_test_marker():
     return ''.join(random.choices(string.ascii_lowercase, k=3))
+
+
+def test_get_chats():
+    get_chats_response = api.get_chats()
+    assert "chats" in get_chats_response

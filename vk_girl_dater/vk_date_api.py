@@ -69,3 +69,37 @@ class VkDateApi:
         response = requests.post(r['url'], headers=r['headers'], data=r['data'])
         if not response.ok:
             raise Exception(response.text + str(response.status_code))
+
+    def make_get_chats_url(self):
+        self.url = "https://dating.vk.com/api/messenger.getChats"
+
+    def make_get_chats_fields(self):
+        self.fields = {
+            "limit": "24",
+            "offset": "0",
+            "filter": "chat",
+            "_token": self.token,
+            "_agent": "love1 version:1.1.0 build:45 commit:b56925d360 env:production platform:desktop_web client:0.0/web/none lang:ru tz:10800 vkid:179377912 screen:d/795x709/1.100000023841858",
+            "_session": "179377912_1740251026686",
+            "_v": "1.13",
+        }
+
+    def make_get_chats_data(self):
+        self.multipart_data = MultipartEncoder(
+            fields=self.fields,
+            boundary="----WebKitFormBoundary8fenChiD4DILfGM4"
+        )
+
+    def make_get_chats_headers(self):
+        self.headers = {
+            "content-type": self.multipart_data.content_type
+        }
+
+    def get_chats(self):
+        self.make_get_chats_url()
+        self.make_get_chats_fields()
+        self.make_get_chats_data()
+        self.make_get_chats_headers()
+        response = requests.post(self.url, headers=self.headers, data=self.multipart_data)
+
+        return response.text
