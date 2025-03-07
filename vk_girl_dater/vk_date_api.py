@@ -1,21 +1,24 @@
 import requests
 from requests_toolbelt.multipart.encoder import MultipartEncoder
-import json
 
 
 class VkDateApi:
     def __init__(self):
-        self.url = ""
-        self.fields = {}
-        self.multipart_data = None
-        self.headers = {}
         self.token = None
 
-    def make_get_hisory_url(self):
-        self.url = "https://dating.vk.com/api/messenger.getHistory"
+    def get_history(self, user_id):
+        url = "https://dating.vk.com/api/messenger.getHistory"
+        request = self.make_get_history_request(user_id)
+        headers = {"content-type": request.content_type}
 
-    def make_get_history_fields(self, user_id):
-        self.fields = {
+        response = requests.post(url, headers=headers, data=request)
+        if not response.ok:
+            raise Exception(response.text)
+
+        return response
+
+    def make_get_history_request(self, user_id):
+        fields = {
             "user_id": user_id,
             "limit": "25",
             "offset": "0",
@@ -25,31 +28,15 @@ class VkDateApi:
             "_v": "1.13",
         }
 
-    def make_get_history_data(self):
-        self.multipart_data = MultipartEncoder(
-            fields=self.fields,
+        return MultipartEncoder(
+            fields=fields,
             boundary="----WebKitFormBoundary1R9RTgZGf7Cm5KWr"
         )
 
-    def make_get_history_headers(self):
-        self.headers = {
-            "content-type": self.multipart_data.content_type,
-        }
-
-    def get_history(self, user_id):
-        self.make_get_hisory_url()
-        self.make_get_history_fields(user_id)
-        self.make_get_history_data()
-        self.make_get_history_headers()
-
-        response = requests.post(self.url, headers=self.headers, data=self.multipart_data)
-
-        jsn = json.loads(response.text)
-        return jsn
 
     def send_message(self, message):
         r = self.__make_send_message_request(message)
-        self.__send_send_message_request(r)
+        return self.__send_send_message_request(r)
 
     def __make_send_message_request(self, message):
         fields = {
@@ -69,12 +56,20 @@ class VkDateApi:
         response = requests.post(r['url'], headers=r['headers'], data=r['data'])
         if not response.ok:
             raise Exception(response.text + str(response.status_code))
+        return response
 
-    def make_get_chats_url(self):
-        self.url = "https://dating.vk.com/api/messenger.getChats"
+    def get_chats(self):
+        url = "https://dating.vk.com/api/messenger.getChats"
+        request = self.make_get_chats_request()
+        headers = {"content-type": request.content_type}
+        response = requests.post(url, headers=headers, data=request)
+        if not response.ok:
+            raise Exception(response.text)
 
-    def make_get_chats_fields(self):
-        self.fields = {
+        return response
+
+    def make_get_chats_request(self):
+        fields = {
             "limit": "24",
             "offset": "0",
             "filter": "chat",
@@ -84,22 +79,7 @@ class VkDateApi:
             "_v": "1.13",
         }
 
-    def make_get_chats_data(self):
-        self.multipart_data = MultipartEncoder(
-            fields=self.fields,
+        return MultipartEncoder(
+            fields=fields,
             boundary="----WebKitFormBoundary8fenChiD4DILfGM4"
         )
-
-    def make_get_chats_headers(self):
-        self.headers = {
-            "content-type": self.multipart_data.content_type
-        }
-
-    def get_chats(self):
-        self.make_get_chats_url()
-        self.make_get_chats_fields()
-        self.make_get_chats_data()
-        self.make_get_chats_headers()
-        response = requests.post(self.url, headers=self.headers, data=self.multipart_data)
-
-        return response.text
