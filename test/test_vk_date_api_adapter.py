@@ -25,4 +25,6 @@ def test_adapt_send_message():
     assert 'привет альтушка' == spy.last_sended_message
 
 def test_adapt_get_chats():
-    pass
+    e_chats = [
+        {'id': 1, 'name': 'Таня'}
+    ]
