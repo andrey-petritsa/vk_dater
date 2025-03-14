@@ -58,4 +58,4 @@ Desktop.ini
 *.dockerfile
 docker-compose.override.yml
 
-test/settings.py
+test/vk_date_platform/settings.py

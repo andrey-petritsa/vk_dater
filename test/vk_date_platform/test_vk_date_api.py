@@ -1,5 +1,5 @@
-from test.settings import token, chat_id
-from vk_girl_dater.vk_date_api import VkDateApi
+from vk_girl_dater.vk_date_platform.vk_date_api import VkDateApi
+from .settings import chat_id, token
 
 api = VkDateApi()
 api.token = token

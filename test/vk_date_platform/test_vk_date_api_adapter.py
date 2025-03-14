@@ -1,6 +1,5 @@
-
-from test.mock_datas.mocks import SpyVkDateApi, StubVkDateApi
-from vk_girl_dater.vk_date_api_adapter import VkDateApiAdapter
+from test.vk_date_platform.mock_datas.mocks import StubVkDateApi, SpyVkDateApi
+from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDateApiAdapter
 
 
 def test_adapt_get_history():
