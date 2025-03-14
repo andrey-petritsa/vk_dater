@@ -29,11 +29,11 @@ class VkDateApiAdapter:
     def get_chats(self):
         get_chats_response = self.__vk_date_api.get_chats()
         chats = []
-        for vk_chats in get_chats_response["chats"]:
-            chats.append(self.__convert_to_chats(vk_chats))
+        for vk_chat in get_chats_response["chats"]:
+            chats.append(self.__convert_to_chat(vk_chat))
         return chats
 
-    def __convert_to_chats(self, vk_api_chats):
+    def __convert_to_chat(self, vk_api_chats):
         id = vk_api_chats['user_id']
         if id == 1:
             return {
