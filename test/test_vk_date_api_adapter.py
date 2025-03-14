@@ -25,6 +25,9 @@ def test_adapt_send_message():
     assert 'привет альтушка' == spy.last_sended_message
 
 def test_adapt_get_chats():
+    adapter = VkDateApiAdapter(StubVkDateApi())
+    chats = adapter.get_chats()
     e_chats = [
-        {'id': 1, 'name': 'Таня'}
+        {'id': 1, 'name': 'service'}
     ]
+    assert e_chats[0] in chats

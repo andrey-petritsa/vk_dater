@@ -25,3 +25,24 @@ class VkDateApiAdapter:
 
     def send_message(self, message):
         self.__vk_date_api.send_message(message)
+
+    def get_chats(self):
+        get_chats_response = self.__vk_date_api.get_chats()
+        chats = []
+        for vk_chats in get_chats_response["chats"]:
+            chats.append(self.__convert_to_chats(vk_chats))
+        return chats
+
+    def __convert_to_chats(self, vk_api_chats):
+        id = vk_api_chats['user_id']
+        if id == 1:
+            return {
+                "id": 1,
+                "name": "service"
+            }
+
+        name = vk_api_chats["user"]["name"]
+        return {
+            "id" : id,
+            "name" : name
+        }
