@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+chats.txt
 
 # Cython debug symbols
 cython_debug/
@@ -13,6 +14,8 @@ env/
 .venv/
 *.env
 
+.idea
+
 # Python packaging
 .Python
 build/
@@ -22,6 +25,8 @@ dist/
 
 # pytest
 .cache/
+.pytest_cache/
+.pytest_cache/*
 nosetests.xml
 coverage.xml
 *.cover
@@ -35,7 +40,11 @@ coverage.xml
 
 # IDEs and editors
 .vscode/
-.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 *.sublime-workspace
 *.sublime-project
 *.iml
@@ -58,4 +67,5 @@ Desktop.ini
 *.dockerfile
 docker-compose.override.yml
 
-test/vk_date_platform/settings.py
+test/tests/vk_date_platform/settings.py
+test-chats/

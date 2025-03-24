@@ -1,6 +1,8 @@
 import requests
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
+from vk_girl_dater.vk_date_platform.exception import InvalidTokenException
+
 
 class VkDateApi:
     def __init__(self):
@@ -13,13 +15,16 @@ class VkDateApi:
 
         response = requests.post(url, headers=headers, data=request)
         if not response.ok:
-            raise Exception(response.text)
+            response_content = response.json()
+            if response_content['error'] == 'token_invalid':
+                raise InvalidTokenException()
+            raise Exception(response.text + f" user_id: {user_id}")
 
         return response
 
     def make_get_history_request(self, user_id):
         fields = {
-            "user_id": user_id,
+            "user_id": str(user_id),
             "limit": "25",
             "offset": "0",
             "_token":self.token,
@@ -40,7 +45,7 @@ class VkDateApi:
 
     def __make_send_message_request(self, message):
         fields = {
-            "user_id": message['user_id'],
+            "user_id": str(message['user_id']),
             "text": message['text'],
             "_token": self.token,
             "_v": "1.13",
@@ -55,6 +60,9 @@ class VkDateApi:
     def __send_send_message_request(self, r):
         response = requests.post(r['url'], headers=r['headers'], data=r['data'])
         if not response.ok:
+            response_content = response.json()
+            if response_content['error'] == 'token_invalid':
+                raise InvalidTokenException()
             raise Exception(response.text + str(response.status_code))
         return response
 
@@ -64,6 +72,9 @@ class VkDateApi:
         headers = {"content-type": request.content_type}
         response = requests.post(url, headers=headers, data=request)
         if not response.ok:
+            response_content = response.json()
+            if response_content['error'] == 'token_invalid':
+                raise InvalidTokenException()
             raise Exception(response.text)
 
         return response
