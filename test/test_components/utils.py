@@ -10,3 +10,4 @@ def save(data, tag):
 def get_current_datetime_string():
     now = datetime.now()
     return f"{now.day:02d}-{now.hour:02d}-{now.minute:02d}-{now.second:02d}"
+

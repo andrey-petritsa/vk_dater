@@ -1,8 +1,9 @@
 from vk_girl_dater.vk_date_platform.vk_date_api import VkDateApi
-from .settings import chat_id, token
+from .settings import chat_id
+from ..test_components.vk.vk_date_token_extractor import VkDateTokenExtractor
 
 api = VkDateApi()
-api.token = token
+api.token = VkDateTokenExtractor.extract()
 
 def test_get_history():
     response = api.get_history(chat_id)
@@ -10,7 +11,7 @@ def test_get_history():
 
 def test_send_message():
     message_text = 'тест'
-    message = {'user_id': chat_id,'text': message_text}
+    message = {'chat_id': chat_id,'text': message_text}
     response = api.send_message(message)
     assert response.ok is True
 

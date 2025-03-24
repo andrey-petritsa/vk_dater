@@ -13,13 +13,13 @@ class VkDateApi:
 
         response = requests.post(url, headers=headers, data=request)
         if not response.ok:
-            raise Exception(response.text)
+            raise Exception(response.text + f" user_id: {user_id}")
 
         return response
 
     def make_get_history_request(self, user_id):
         fields = {
-            "user_id": user_id,
+            "user_id": str(user_id),
             "limit": "25",
             "offset": "0",
             "_token":self.token,
@@ -40,7 +40,7 @@ class VkDateApi:
 
     def __make_send_message_request(self, message):
         fields = {
-            "user_id": message['user_id'],
+            "user_id": str(message['chat_id']),
             "text": message['text'],
             "_token": self.token,
             "_v": "1.13",
