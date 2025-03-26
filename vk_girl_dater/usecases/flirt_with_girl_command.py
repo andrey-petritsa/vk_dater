@@ -36,7 +36,7 @@ class FlirtWithGirlCommand:
 
     def __get_last_message_date(self, chat):
         msg = chat['messages'][-1]
-        return datetime.strptime(msg['date'], "%Y-%m-%dT%H:%M:%S.%fZ")
+        return datetime.strptime(msg['date'], "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=timezone.utc)
 
     def __save_chats(self, chats):
         for chat in chats:
