@@ -1,3 +1,4 @@
+
 from test.test_components.vk.vk_date_token_extractor import VkDateTokenExtractor
 from test.vk_date_platform.settings import deepseek_token
 from vk_girl_dater.chat_repository.in_file_chat_repository.in_file_chat_repository import InFileChatRepository

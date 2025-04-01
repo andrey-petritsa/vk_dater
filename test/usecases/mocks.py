@@ -3,7 +3,7 @@ chats = [
         'id': 1, 'name': 'вика',
         'messages': [
             {
-                'text': 'привет красавчик, я вика',
+                'text': 'привет, я вика',
                 'date': '2025-01-27T16:14:21.211Z',
                 'user': 'girl'
             }
@@ -13,7 +13,7 @@ chats = [
         'id': 2, 'name': 'катя',
         "messages": [
             {
-                'text': 'привет красавчик, я катя',
+                'text': 'привет, я катя',
                 'date': '2025-01-27T16:14:21.211Z',
                 'user': 'girl'
             },
@@ -24,7 +24,7 @@ chats = [
 class SpyFlirter():
     def guess_next_message(self, chat):
         self.last_messages = chat['messages']
-        return "привет альтушка"
+        return "привет как дела?"
 
     def get_last_sended_chat(self):
         msgs = []

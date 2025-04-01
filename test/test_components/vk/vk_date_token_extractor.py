@@ -33,10 +33,9 @@ class VkDateTokenExtractor:
 
         for part in parts:
             if 'Content-Disposition: form-data; name="_token"' in part:
-                # Извлекаем значение _token
-                start = part.find("\r\n\r\n") + 4  # Находим начало данных после заголовка
-                end = part.find("\r\n--")  # Находим конец данных
-                token = part[start:end].strip()  # Извлекаем строку
+                start = part.find("\r\n\r\n") + 4
+                end = part.find("\r\n--")
+                token = part[start:end].strip()
                 return token
 
         raise Exception('Токен не найден в браузере')

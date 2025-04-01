@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from test.test_components.chat_utils import to_str_many
 from test.usecases.mocks import SpyFlirtPlatform, SpyFlirter, SpyChatRepository
@@ -14,7 +14,7 @@ class TestalbeFlirtWithGirlCommand(FlirtWithGirlCommand):
         return chats
 
     def _get_current_date(self):
-        return datetime.strptime(young_date, "%Y-%m-%dT%H:%M:%S.%fZ")
+        return datetime.strptime(young_date, "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=timezone.utc)
 
 
 class TestFlirtWithGirlCommand:
@@ -35,7 +35,7 @@ class TestFlirtWithGirlCommand:
         self.command.execute()
 
         assert self.command.chats_for_flirt == [1]
-        assert self.command.flirt_platform.sended_messages == ["1 привет альтушка"]
+        assert self.command.flirt_platform.sended_messages == ["1 привет как дела?"]
 
     def test_get_chats_for_flirt__when_last_message_is_old_enough(self):
         self.command.flirt_platform.chats = [
@@ -45,7 +45,7 @@ class TestFlirtWithGirlCommand:
         self.command.execute()
 
         assert self.command.chats_for_flirt == [2]
-        assert self.command.flirt_platform.sended_messages == ["2 привет альтушка"]
+        assert self.command.flirt_platform.sended_messages == ["2 привет как дела?"]
 
 
     def test_save_chats_in_repository(self):

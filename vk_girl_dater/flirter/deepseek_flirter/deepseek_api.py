@@ -14,13 +14,12 @@ class DeepseekApi:
     def get_chat_response(self, messages):
         url = "https://api.deepseek.com/chat/completions"
         headers = {"Content-Type": "application/json","Authorization": f"Bearer {self.__token}"}
-        promt_message = {"role":"system", "content":f"{self.promt}"}
-        messages = [promt_message, *messages]
 
         data = {
             "model": "deepseek-chat",
             "messages":messages,
-            "stream": False
+            "stream": False,
+            "temperature": 0.8
         }
 
         response = requests.post(url, json=data, headers=headers)

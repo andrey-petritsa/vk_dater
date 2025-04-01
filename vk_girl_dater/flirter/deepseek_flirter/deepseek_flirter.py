@@ -6,13 +6,23 @@ class DeepseekFlirter:
         self.__deepseek_api = deepseek_api
 
     def guess_next_message(self, chat):
-        if len(chat['messages']) == 0:
-            deepseek_messages = [{'content': podcat_promt, 'role': 'user'}]
-        else:
-            deepseek_messages = [{'role': self.__get_role_by(msg), 'content': self.__get_message_text(msg)} for msg in chat['messages']]
-
+        deepseek_messages = self.__get_deepseek_messages(chat)
         response = self.__deepseek_api.get_chat_response(deepseek_messages)
         return self._get_text_from(response)
+
+    def __get_deepseek_messages(self, chat):
+        promt_message = {"role":"system", "content":f"{chat['promt']}"}
+        if len(chat['messages']) == 0:
+            deepseek_messages = self.__get_deepseek_message_for_empty_chat()
+        else:
+            deepseek_messages = self.__get_deepseek_messages_for_non_empty_chat(chat)
+        return [promt_message] + deepseek_messages
+
+    def __get_deepseek_message_for_empty_chat(self):
+        return [{'content':podcat_promt, 'role':'user'}]
+
+    def __get_deepseek_messages_for_non_empty_chat(self, chat):
+        return [{'role':self.__get_role_by(msg), 'content':self.__get_message_text(msg)} for msg in chat['messages']]
 
     def __get_message_text(self, message):
         return f"{self.__get_tag_by(message)}: {message['text']}"
