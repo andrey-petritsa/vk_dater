@@ -1,6 +1,6 @@
-import test.vk_date_platform.mock_datas.get_chats_response as get_chats_response
-import test.vk_date_platform.mock_datas.get_history_response as get_history_response
-from test.web_utils import get_json_response
+import test.mocks.mock_datas.get_chats_response as get_chats_response
+import test.mocks.mock_datas.get_history_response as get_history_response
+from test.utils.web_utils import get_json_response
 
 
 class StubVkDateApi:

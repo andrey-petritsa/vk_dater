@@ -1,7 +1,10 @@
+import pytest
+
 from vk_girl_dater.main.flirt_command_factory import FlirtCommandFactory
 
 
 class TestFlirt:
+    @pytest.mark.integration
     def test_flirt(self):
         command = FlirtCommandFactory.create()
         command.execute()

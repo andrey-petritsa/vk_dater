@@ -1,6 +1,6 @@
 import requests
 
-from test.vk_date_platform.settings import promt
+from test.tests.vk_date_platform.settings import promt
 
 
 class DeepseekApi:

@@ -1,6 +1,5 @@
-from test.test_components.chat_utils import to_chat
-from test.vk_date_platform import settings
-from test.vk_date_platform.settings import deepseek_token
+from test.utils.chat_utils import to_chat
+from test.tests.vk_date_platform.settings import deepseek_token
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_api import DeepseekApi
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_flirter import DeepseekFlirter
 

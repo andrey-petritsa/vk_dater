@@ -1,5 +1,5 @@
-from test.flirter.deepseek_flirter.mocks import SpyDeepseekApi
-from test.vk_date_platform.settings import podcat_promt
+from test.tests.deepseek_flirter.mocks import SpyDeepseekApi
+from test.tests.vk_date_platform.settings import podcat_promt
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_flirter import DeepseekFlirter
 
 class TestableDeepseekFlirter(DeepseekFlirter):
@@ -14,11 +14,13 @@ class TestDeepseekFlirter:
             'messages': [
                 {'text': 'привет как дела?', 'user': 'bot'},
                 {'text': 'все хорошо', 'user': 'girl'},
-            ]
+            ],
+            'promt': 'промт для ai'
         }
         flirter.guess_next_message(chat)
 
         assert spy.last_messages == [
+            {'content': 'промт для ai', 'role': 'system'},
             {'content': 'парень(бот): привет как дела?', 'role': 'assistant'},
             {'content': 'девушка: все хорошо', 'role': 'user'},
         ]
@@ -27,8 +29,12 @@ class TestDeepseekFlirter:
         spy = SpyDeepseekApi()
         flirter = TestableDeepseekFlirter(spy)
         chat = {
-            'messages': []
+            'messages': [],
+            'promt': 'промт для ai'
         }
         flirter.guess_next_message(chat)
 
-        assert spy.last_messages == [{'content':podcat_promt, 'role':'user'}]
+        assert spy.last_messages == [
+            {'content': 'промт для ai', 'role': 'system'},
+            {'content': '*GUESS_MESSAGE', 'role': 'user'}
+        ]

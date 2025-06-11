@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
-from test.test_components.chat_utils import to_str_many
-from test.usecases.mocks import SpyFlirtPlatform, SpyFlirter, SpyChatRepository
+from test.mocks.mocks import SpyFlirtPlatform, SpyFlirter, SpyChatRepository
+from test.utils.chat_utils import to_str_many
 from vk_girl_dater.usecases.flirt_with_girl_command import FlirtWithGirlCommand
 
 young_date = '2025-01-01T12:00:00.000Z'
@@ -30,7 +30,7 @@ class TestFlirtWithGirlCommand:
 
     def test_get_chats_for_flirt__when_no_messages_in_chat(self):
         self.command.flirt_platform.chats = [
-            {'id':1, 'messages':[]},
+            {'id':1, 'messages':[], 'name': 'test'},
         ]
         self.command.execute()
 

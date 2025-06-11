@@ -4,7 +4,7 @@ response = {
             "id": "2382a61e-56d5-4e10-aa68-c8486dd7762b",
             "display_type": "primary",
             "is_my": True,
-            "content": "Наш мед раньше тюрьмой был",
+            "content": "Тестовое сообщение",
             "content_type": "text",
             "created_at": "2025-01-27T16:14:21.211Z",
             "attachments": [],

@@ -1,4 +1,4 @@
-from test.vk_date_platform.settings import podcat_promt
+from test.tests.vk_date_platform.settings import podcat_promt
 
 
 class DeepseekFlirter:

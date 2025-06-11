@@ -1,5 +1,13 @@
+def to_str_messages(chat):
+    if 'messages' not in chat:
+        return ''
+    else:
+        return " ".join(chat['messages'])
+
 def to_str_one(chat):
     return chat['id']
+
+
 
 def to_str_many(chats):
     str_chats = []

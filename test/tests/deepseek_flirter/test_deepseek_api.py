@@ -1,4 +1,4 @@
-from test.vk_date_platform.settings import deepseek_token
+from test.tests.vk_date_platform.settings import deepseek_token
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_api import DeepseekApi
 
 

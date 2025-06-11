@@ -1,4 +1,4 @@
-from test.test_components.web_utils import get_json_response
+from test.utils.web_utils import get_json_response
 
 
 class SpyDeepseekApi:

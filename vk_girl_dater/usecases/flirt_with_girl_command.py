@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
-from test.vk_date_platform import settings
+from test.tests.vk_date_platform import settings
 
 
 class FlirtWithGirlCommand:

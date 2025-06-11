@@ -1,6 +1,6 @@
 
-from test.test_components.vk.vk_date_token_extractor import VkDateTokenExtractor
-from test.vk_date_platform.settings import deepseek_token
+from test.utils.vk_date_token_extractor import VkDateTokenExtractor
+from test.tests.vk_date_platform.settings import deepseek_token
 from vk_girl_dater.chat_repository.in_file_chat_repository.in_file_chat_repository import InFileChatRepository
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_api import DeepseekApi
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_flirter import DeepseekFlirter
