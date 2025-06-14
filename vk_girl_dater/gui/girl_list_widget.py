@@ -21,7 +21,6 @@ class GirlListWidget(QListWidget):
     def on_item_clicked(self, item):
         main_window = self.parent()
         self.detail_window = GirlDetailWindow()
-        self.detail_window.parent_window = main_window
         main_window.hide()
         self.detail_window.exec()
         main_window.show()

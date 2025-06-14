@@ -10,7 +10,6 @@ class GirlDetailWindow(QDialog):
         self.center_window()
 
         layout = QVBoxLayout()
-
         info_label = QLabel(f"Профиль девушки: Тест")
         layout.addWidget(info_label)
 
