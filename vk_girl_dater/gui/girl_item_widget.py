@@ -1,5 +1,4 @@
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QPixmap, QPainter, QColor
+from PyQt6.QtGui import QPixmap, QColor
 from PyQt6.QtWidgets import QWidget, QLabel, QHBoxLayout, QListWidgetItem
 
 
@@ -7,11 +6,11 @@ class GirlItemWidget(QListWidgetItem):
     def __init__(self, parent_list, name):
         super().__init__(parent_list)
         
-        self.widget = self._create_widget(name)
+        self.widget = self.__create_widget(name)
         self.setSizeHint(self.widget.sizeHint())
         parent_list.setItemWidget(self, self.widget)
 
-    def _create_widget(self, name):
+    def __create_widget(self, name):
         widget = QWidget()
         name_label = QLabel(name)
         avatar_label = self._create_avatar_label()
