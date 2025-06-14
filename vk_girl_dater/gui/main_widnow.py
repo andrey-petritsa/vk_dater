@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import (QWidget, QListWidget, QHBoxLayout, QListWidgetItem)
+from PyQt6.QtWidgets import (QWidget, QListWidget, QHBoxLayout)
 from PyQt6.QtCore import QRect, QPoint
 
 from vk_girl_dater.gui.girl_item_widget import GirlItemWidget
@@ -16,11 +16,14 @@ class MainWindow(QWidget):
         main_layout.addWidget(self.girls_list)
         self.setLayout(main_layout)
 
-        self.add_girl("Анна", "")
-        self.add_girl("Мария", "")
-        self.add_girl("Елена", "")
-
+        self.add_girl("Анна")
+        self.add_girl("Мария")
+        self.add_girl("Елена")
+        
         self.center_window()
+
+    def add_girl(self, name):
+        GirlItemWidget(self.girls_list, name)
 
     def center_window(self):
         screen = self.screen().geometry()
@@ -29,13 +32,6 @@ class MainWindow(QWidget):
         new_rect = QRect(QPoint(0, 0), window_size.size())
         new_rect.moveCenter(center_point)
         self.setGeometry(new_rect)
-
-    def add_girl(self, name, image_path):
-        item = QListWidgetItem()
-        self.girls_list.addItem(item)
-        widget = GirlItemWidget(name, image_path)
-        item.setSizeHint(widget.sizeHint())
-        self.girls_list.setItemWidget(item, widget)
 
     def on_item_clicked(self, item):
         print("Привет")
