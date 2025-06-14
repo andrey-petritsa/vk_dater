@@ -11,17 +11,10 @@ class MainWindow(QWidget):
         self.setGeometry(100, 100, 400, 500)
         QtUtils.center(self)
 
-        girls_list = self.__create_girls_list()
+        girls_list = GirlListWidget()
         main_layout = QHBoxLayout()
         main_layout.addWidget(girls_list)
         self.setLayout(main_layout)
-
-    def __create_girls_list(self):
-        girls_list = GirlListWidget()
-        girls_list.add_girl('Анна')
-        girls_list.add_girl('Мария')
-
-        return girls_list
 
     def on_item_clicked(self, item):
         print("Привет")

@@ -10,6 +10,8 @@ class GirlListWidget(QListWidget):
         super().__init__()
         self.detail_window = None
         self.itemClicked.connect(self.on_item_clicked)
+        self.add_girl('Анна')
+        self.add_girl('Мария')
 
     def add_girl(self, name):
         item = QListWidgetItem(self)
