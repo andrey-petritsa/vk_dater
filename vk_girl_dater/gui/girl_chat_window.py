@@ -1,10 +1,9 @@
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QPushButton, QLabel
-from PyQt6.QtCore import QRect, QPoint
 
 from vk_girl_dater.gui.qt_utils import QtUtils
 
 
-class GirlDetailWindow(QDialog):
+class GirlChatWindow(QDialog):
     def __init__(self):
         super().__init__()
 

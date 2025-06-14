@@ -2,13 +2,12 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QListWidget, QListWidgetItem, QApplication
 
 from vk_girl_dater.gui.girl_item_widget import GirlItemWidget
-from vk_girl_dater.gui.girl_detail_window import GirlDetailWindow
+from vk_girl_dater.gui.girl_chat_window import GirlChatWindow
 
 
 class GirlListWidget(QListWidget):
     def __init__(self):
         super().__init__()
-        self.detail_window = None
         self.itemClicked.connect(self.on_item_clicked)
         self.add_girl('Анна')
         self.add_girl('Мария')
@@ -22,7 +21,7 @@ class GirlListWidget(QListWidget):
 
     def on_item_clicked(self, item):
         main_window = self.parent()
-        self.detail_window = GirlDetailWindow()
+        self.chat_window = GirlChatWindow()
         main_window.hide()
-        self.detail_window.exec()
+        self.chat_window.exec()
         main_window.show()
