@@ -1,13 +1,15 @@
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QPushButton, QLabel
 from PyQt6.QtCore import QRect, QPoint
 
+from vk_girl_dater.gui.qt_utils import QtUtils
+
 
 class GirlDetailWindow(QDialog):
     def __init__(self):
         super().__init__()
 
         self.setGeometry(100, 100, 400, 500)
-        self.center_window()
+        QtUtils.center(self)
 
         layout = QVBoxLayout()
         info_label = QLabel(f"Профиль девушки: Тест")
@@ -21,11 +23,3 @@ class GirlDetailWindow(QDialog):
 
     def on_back_clicked(self):
         self.accept()
-
-    def center_window(self):
-        screen = self.screen().geometry()
-        window_size = self.geometry()
-        center_point = screen.center()
-        new_rect = QRect(QPoint(0, 0), window_size.size())
-        new_rect.moveCenter(center_point)
-        self.setGeometry(new_rect)
