@@ -16,14 +16,11 @@ class GirlChatWindow(QDialog):
 
         main_layout = QVBoxLayout()
 
-        # Верхняя секция с именем и аватаркой
         header_layout = QHBoxLayout()
 
-        # Аватарка
         avatar_label = self._create_avatar_label()
         header_layout.addWidget(avatar_label)
 
-        # Имя девушки
         name_label = QLabel(girl_name)
         name_label.setStyleSheet("font-size: 18px; font-weight: bold;")
         header_layout.addWidget(name_label)
@@ -31,13 +28,11 @@ class GirlChatWindow(QDialog):
 
         main_layout.addLayout(header_layout)
 
-        # Чат с историей сообщений
         chat_area = QScrollArea()
         chat_area.setWidgetResizable(True)
         chat_widget = QWidget()
         chat_layout = QVBoxLayout(chat_widget)
 
-        # Примеры сообщений в чате
         self._add_message(chat_layout, "Андрей", "Привет как дела")
         self._add_message(chat_layout, self.girl_name, "Неплохо, как сам?")
         self._add_message(chat_layout, "Андрей", "Хорошо")
@@ -46,7 +41,7 @@ class GirlChatWindow(QDialog):
         chat_widget.setLayout(chat_layout)
         chat_area.setWidget(chat_widget)
 
-        main_layout.addWidget(chat_area, 1)  # Растягиваем по вертикали
+        main_layout.addWidget(chat_area, 1)
 
         # Поле для ввода нового сообщения
         input_layout = QHBoxLayout()
@@ -121,16 +116,7 @@ class GirlChatWindow(QDialog):
         layout.addLayout(message_container)
 
     def on_send_clicked(self):
-        message = self.message_input.toPlainText().strip()
-        if message:
-            chat_layout = self.findChild(QScrollArea).widget().layout()
-            self._add_message(chat_layout, "Андрей", message)
-            self.message_input.clear()
-
-            # Автоматический ответ от девушки (для демонстрации)
-            # В реальном приложении здесь может быть логика генерации ответа
-            if self.girl_name:
-                self._add_message(chat_layout, self.girl_name, "Хорошо, понятно")
+        pass
 
     def on_back_clicked(self):
         self.accept()
