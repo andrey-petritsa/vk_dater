@@ -2,29 +2,26 @@ from PyQt6.QtWidgets import (QWidget, QListWidget, QHBoxLayout, QListWidgetItem)
 from PyQt6.QtCore import QRect, QPoint
 
 from vk_girl_dater.gui.girl_item_widget import GirlItemWidget
+from vk_girl_dater.gui.girl_list_widget import GirlListWidget
 
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-
-        self.girls_list = QListWidget()
-        self.girls_list.itemClicked.connect(self.on_item_clicked)
-        main_layout = QHBoxLayout()
-        main_layout.addWidget(self.girls_list)
-        self.setLayout(main_layout)
-        
-        self.add_girl('Анна')
-        self.add_girl('Мария')
-
         self.setGeometry(100, 100, 400, 500)
         self.center_window()
 
-    def add_girl(self, name):
-        item = QListWidgetItem(self.girls_list)
-        widget = GirlItemWidget(name)
-        item.setSizeHint(widget.sizeHint())
-        self.girls_list.setItemWidget(item, widget)
+        girls_list = self.__create_girls_list()
+        main_layout = QHBoxLayout()
+        main_layout.addWidget(girls_list)
+        self.setLayout(main_layout)
+
+    def __create_girls_list(self):
+        girls_list = GirlListWidget()
+        girls_list.add_girl('Анна')
+        girls_list.add_girl('Мария')
+
+        return girls_list
 
     def center_window(self):
         screen = self.screen().geometry()
