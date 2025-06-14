@@ -7,23 +7,17 @@ from vk_girl_dater.gui.girl_item_widget import GirlItemWidget
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setGeometry(100, 100, 400, 500)
 
         self.girls_list = QListWidget()
         self.girls_list.itemClicked.connect(self.on_item_clicked)
-
         main_layout = QHBoxLayout()
         main_layout.addWidget(self.girls_list)
         self.setLayout(main_layout)
+        GirlItemWidget(self.girls_list, 'Анна')
+        GirlItemWidget(self.girls_list, 'Мария')
 
-        self.add_girl("Анна")
-        self.add_girl("Мария")
-        self.add_girl("Елена")
-        
+        self.setGeometry(100, 100, 400, 500)
         self.center_window()
-
-    def add_girl(self, name):
-        GirlItemWidget(self.girls_list, name)
 
     def center_window(self):
         screen = self.screen().geometry()
