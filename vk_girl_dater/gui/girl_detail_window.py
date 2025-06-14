@@ -3,17 +3,15 @@ from PyQt6.QtCore import QRect, QPoint
 
 
 class GirlDetailWindow(QDialog):
-    def __init__(self, name, parent=None):
-        super().__init__(parent)
-        self.setWindowTitle(f"Информация о {name}")
-        self.parent_window = parent
+    def __init__(self):
+        super().__init__()
 
         self.setGeometry(100, 100, 400, 500)
         self.center_window()
 
         layout = QVBoxLayout()
 
-        info_label = QLabel(f"Профиль девушки: {name}")
+        info_label = QLabel(f"Профиль девушки: Тест")
         layout.addWidget(info_label)
 
         back_button = QPushButton("Назад")
