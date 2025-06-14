@@ -1,12 +1,14 @@
-from PyQt6.QtWidgets import QListWidget, QListWidgetItem
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QListWidget, QListWidgetItem, QApplication
 
 from vk_girl_dater.gui.girl_item_widget import GirlItemWidget
+from vk_girl_dater.gui.girl_detail_window import GirlDetailWindow
 
 
 class GirlListWidget(QListWidget):
     def __init__(self):
         super().__init__()
-
+        self.detail_window = None
         self.itemClicked.connect(self.on_item_clicked)
 
     def add_girl(self, name):
@@ -14,6 +16,13 @@ class GirlListWidget(QListWidget):
         widget = GirlItemWidget(name)
         item.setSizeHint(widget.sizeHint())
         self.setItemWidget(item, widget)
+        item.setData(Qt.ItemDataRole.UserRole, name)
 
     def on_item_clicked(self, item):
-        print("Привет")
+        name = item.data(Qt.ItemDataRole.UserRole)
+        main_window = self.parent()
+        self.detail_window = GirlDetailWindow(name, None)
+        self.detail_window.parent_window = main_window
+        main_window.hide()
+        self.detail_window.exec()
+        main_window.show()
