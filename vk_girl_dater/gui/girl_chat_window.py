@@ -6,18 +6,19 @@ from vk_girl_dater.gui.qt_utils import QtUtils
 
 
 class GirlChatWindow(QDialog):
-    def __init__(self):
+    def __init__(self, chat):
         super().__init__()
+        self.chat = chat
         self.setLayout(self.__get_main_layout())
 
-        self.setWindowTitle(f"Чат с Тест")
+        self.setWindowTitle(f"Чат с {self.chat['name']}")
         self.setGeometry(100, 100, 500, 600)
         QtUtils.center(self)
 
     def __get_main_layout(self):
         main_layout = QVBoxLayout()
-        main_layout.addLayout(self.__get_header("Тест"))
-        main_layout.addWidget(MessageListWidget([]))
+        main_layout.addLayout(self.__get_header())
+        main_layout.addWidget(MessageListWidget(self.chat['messages']))
         main_layout.addLayout(self.__get_input_layout())
         main_layout.addWidget(self.__get_back_button())
         return main_layout
@@ -45,11 +46,11 @@ class GirlChatWindow(QDialog):
         message_input.setPlaceholderText("Введите сообщение...")
         return message_input
 
-    def __get_header(self, girl_name):
+    def __get_header(self):
         header_layout = QHBoxLayout()
         avatar_label = self.__get_avatar_label()
         header_layout.addWidget(avatar_label)
-        name_label = QLabel(girl_name)
+        name_label = QLabel(self.chat['name'])
         name_label.setStyleSheet("font-size: 18px; font-weight: bold;")
         header_layout.addWidget(name_label)
         header_layout.addStretch()

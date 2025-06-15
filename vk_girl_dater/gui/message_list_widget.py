@@ -9,9 +9,8 @@ class MessageListWidget(QScrollArea):
         message_widget = QWidget()
         self.setWidgetResizable(True)
         chat_layout = QVBoxLayout(message_widget)
-        self.__add_message(chat_layout, "Андрей", "Привет как дела")
-        self.__add_message(chat_layout, "Екатерина", "Неплохо, как сам?")
-        self.__add_message(chat_layout, "Андрей", "Хорошо")
+        for message in messages:
+            self.__add_message(chat_layout, message['name'], message['text'])
         chat_layout.addStretch()
         self.setLayout(chat_layout)
         self.setWidget(message_widget)
