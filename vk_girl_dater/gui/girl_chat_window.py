@@ -6,18 +6,18 @@ from vk_girl_dater.gui.qt_utils import QtUtils
 
 
 class GirlChatWindow(QDialog):
-    def __init__(self, girl_name="Екатерина"):
+    def __init__(self):
         super().__init__()
-        self.setLayout(self.__get_main_layout(girl_name))
+        self.setLayout(self.__get_main_layout())
 
-        self.setWindowTitle(f"Чат с {girl_name}")
+        self.setWindowTitle(f"Чат с Тест")
         self.setGeometry(100, 100, 500, 600)
         QtUtils.center(self)
 
-    def __get_main_layout(self, girl_name):
+    def __get_main_layout(self):
         main_layout = QVBoxLayout()
-        main_layout.addLayout(self.__get_header(girl_name))
-        main_layout.addWidget(MessageListWidget())
+        main_layout.addLayout(self.__get_header("Тест"))
+        main_layout.addWidget(MessageListWidget([]))
         main_layout.addLayout(self.__get_input_layout())
         main_layout.addWidget(self.__get_back_button())
         return main_layout
