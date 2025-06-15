@@ -5,8 +5,7 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QHBoxLayout
 class MessageWidget(QWidget):
     def __init__(self, message):
         super().__init__()
-        message_layout = self.__get_message_layout(message)
-        self.setLayout(message_layout)
+        self.setLayout(self.__get_main_layout(message))
         self.message_container = self.__get_message_container(message)
         self.__set_size()
 
@@ -16,24 +15,24 @@ class MessageWidget(QWidget):
         self.setMaximumWidth(300)
 
     def __get_message_container(self, message):
-        message_container = QHBoxLayout()
+        layout = QHBoxLayout()
         if message['name'] == "Андрей":
             self.setStyleSheet("background-color: #DCF8C6; border-radius: 10px; margin: 2px;")
-            message_container.addStretch()
-            message_container.addWidget(self)
+            layout.addStretch()
+            layout.addWidget(self)
         else:
             self.setStyleSheet("background-color: #ECECEC; border-radius: 10px; margin: 2px;")
-            message_container.addWidget(self)
-            message_container.addStretch()
-        return message_container
+            layout.addWidget(self)
+            layout.addStretch()
+        return layout
 
-    def __get_message_layout(self, message):
-        message_layout = QVBoxLayout(self)
-        message_layout.setSpacing(2)
-        message_layout.addWidget(self.__get_sender_label(message))
-        message_layout.addWidget(self.__get_text_label(message))
-        message_layout.setContentsMargins(10, 10, 10, 10)
-        return message_layout
+    def __get_main_layout(self, message):
+        layout = QVBoxLayout(self)
+        layout.setSpacing(2)
+        layout.addWidget(self.__get_sender_label(message))
+        layout.addWidget(self.__get_text_label(message))
+        layout.setContentsMargins(10, 10, 10, 10)
+        return layout
 
     def __get_text_label(self, message):
         text_label = QLabel(message['text'])
