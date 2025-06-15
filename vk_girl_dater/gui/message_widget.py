@@ -7,10 +7,9 @@ class MessageWidget(QWidget):
         super().__init__()
         message_layout = self.__get_message_layout(message)
         self.setLayout(message_layout)
-
         self.message_container = self.__get_message_container(message)
         self.__set_size()
-        
+
 
     def __set_size(self):
         self.setMinimumWidth(200)
