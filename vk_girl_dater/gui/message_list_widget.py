@@ -16,6 +16,6 @@ class MessageListWidget(QScrollArea):
         self.setWidget(message_widget)
 
     def __add_message(self, layout, sender, text):
-        message = {'sender_name': sender,'text': text}
+        message = {'name': sender,'text': text}
         message_widget = MessageWidget(message)
         layout.addLayout(message_widget.message_container)

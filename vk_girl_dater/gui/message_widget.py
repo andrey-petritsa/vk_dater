@@ -17,7 +17,7 @@ class MessageWidget(QWidget):
 
     def __get_message_container(self, message):
         message_container = QHBoxLayout()
-        if message['sender_name'] == "Андрей":
+        if message['name'] == "Андрей":
             self.setStyleSheet("background-color: #DCF8C6; border-radius: 10px; margin: 2px;")
             message_container.addStretch()
             message_container.addWidget(self)
@@ -43,6 +43,6 @@ class MessageWidget(QWidget):
         return text_label
 
     def __get_sender_label(self, message):
-        sender_label = QLabel(message['sender_name'])
+        sender_label = QLabel(message['name'])
         sender_label.setStyleSheet("font-weight: bold;")
         return sender_label
