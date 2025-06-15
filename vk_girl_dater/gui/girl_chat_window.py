@@ -52,9 +52,9 @@ class GirlChatWindow(QDialog):
         chat_area.setWidgetResizable(True)
         chat_widget = QWidget()
         chat_layout = QVBoxLayout(chat_widget)
-        self._add_message(chat_layout, "Андрей", "Привет как дела")
-        self._add_message(chat_layout, self.girl_name, "Неплохо, как сам?")
-        self._add_message(chat_layout, "Андрей", "Хорошо")
+        self.__add_message(chat_layout, "Андрей", "Привет как дела")
+        self.__add_message(chat_layout, self.girl_name, "Неплохо, как сам?")
+        self.__add_message(chat_layout, "Андрей", "Хорошо")
         chat_layout.addStretch()
         chat_widget.setLayout(chat_layout)
         chat_area.setWidget(chat_widget)
@@ -62,7 +62,7 @@ class GirlChatWindow(QDialog):
 
     def __get_header(self, girl_name):
         header_layout = QHBoxLayout()
-        avatar_label = self._create_avatar_label()
+        avatar_label = self.__get_avatar_label()
         header_layout.addWidget(avatar_label)
         name_label = QLabel(girl_name)
         name_label.setStyleSheet("font-size: 18px; font-weight: bold;")
@@ -70,7 +70,7 @@ class GirlChatWindow(QDialog):
         header_layout.addStretch()
         return header_layout
 
-    def _create_avatar_label(self):
+    def __get_avatar_label(self):
         size = 70
         avatar_label = QLabel()
         avatar_label.setFixedSize(size, size)
@@ -81,7 +81,7 @@ class GirlChatWindow(QDialog):
         avatar_label.setPixmap(pixmap)
         return avatar_label
 
-    def _add_message(self, layout, sender, text):
+    def __add_message(self, layout, sender, text):
         message = {'sender_name': sender,'text': text}
         message_widget = MessageWidget(message)
         layout.addLayout(message_widget.message_container)
