@@ -68,11 +68,6 @@ class GirlChatWindow(QDialog):
         avatar_label.setPixmap(pixmap)
         return avatar_label
 
-    def __add_message(self, layout, sender, text):
-        message = {'sender_name': sender,'text': text}
-        message_widget = MessageWidget(message)
-        layout.addLayout(message_widget.message_container)
-
     def on_send_clicked(self):
         pass
 
