@@ -10,36 +10,39 @@ class GirlChatWindow(QDialog):
     def __init__(self, girl_name="Екатерина"):
         super().__init__()
         self.girl_name = girl_name
+        self.setLayout(self.__get_main_layout(girl_name))
         
-
-
-        main_layout = QVBoxLayout()
-        main_layout.addLayout(self.__get_header(girl_name))
-        main_layout.addWidget(self.__get_chat_area())
-
-        # Поле для ввода нового сообщения
-        input_layout = QHBoxLayout()
-        self.message_input = QTextEdit()
-        self.message_input.setFixedHeight(60)
-        self.message_input.setPlaceholderText("Введите сообщение...")
-        input_layout.addWidget(self.message_input)
-
-        send_button = QPushButton("Отправить")
-        send_button.setFixedWidth(100)
-        send_button.clicked.connect(self.on_send_clicked)
-        input_layout.addWidget(send_button)
-
-        main_layout.addLayout(input_layout)
-
-        # Кнопка назад
-        back_button = QPushButton("Назад")
-        back_button.clicked.connect(self.on_back_clicked)
-        main_layout.addWidget(back_button)
-
-        self.setLayout(main_layout)
         self.setWindowTitle(f"Чат с {girl_name}")
         self.setGeometry(100, 100, 500, 600)
         QtUtils.center(self)
+
+    def __get_main_layout(self, girl_name):
+        main_layout = QVBoxLayout()
+        main_layout.addLayout(self.__get_header(girl_name))
+        main_layout.addWidget(self.__get_chat_area())
+        input_layout = QHBoxLayout()
+        input_layout.addWidget(self.__get_message_input())
+        input_layout.addWidget(self.__get_send_button())
+        main_layout.addLayout(input_layout)
+        main_layout.addWidget(self.__get_back_button())
+        return main_layout
+
+    def __get_back_button(self):
+        back_button = QPushButton("Назад")
+        back_button.clicked.connect(self.on_back_clicked)
+        return back_button
+
+    def __get_send_button(self):
+        send_button = QPushButton("Отправить")
+        send_button.setFixedWidth(100)
+        send_button.clicked.connect(self.on_send_clicked)
+        return send_button
+
+    def __get_message_input(self):
+        message_input = QTextEdit()
+        message_input.setFixedHeight(60)
+        message_input.setPlaceholderText("Введите сообщение...")
+        return message_input
 
     def __get_chat_area(self):
         chat_area = QScrollArea()
