@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QPushButton, QLab
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QColor
 
+from vk_girl_dater.gui.message_widget import MessageWidget
 from vk_girl_dater.gui.qt_utils import QtUtils
 
 
@@ -76,44 +77,9 @@ class GirlChatWindow(QDialog):
         return avatar_label
 
     def _add_message(self, layout, sender, text):
-        message_widget = QWidget()
-        message_layout = QVBoxLayout(message_widget)
-        message_layout.setSpacing(2)  # Уменьшаем отступы между элементами
-
-        # Имя отправителя
-        sender_label = QLabel(sender)
-        sender_label.setStyleSheet("font-weight: bold;")
-
-        # Текст сообщения
-        text_label = QLabel(text)
-        text_label.setWordWrap(True)  # Включаем перенос слов
-        text_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)  # Делаем текст выделяемым
-
-        # Делаем текст более видимым
-        text_label.setStyleSheet("color: black; font-size: 12px;")
-
-        message_layout.addWidget(sender_label)
-        message_layout.addWidget(text_label)
-        message_layout.setContentsMargins(10, 10, 10, 10)  # Увеличиваем внутренние отступы
-
-        message_widget.setLayout(message_layout)
-
-        # Добавляем выравнивание в зависимости от отправителя
-        message_container = QHBoxLayout()
-        if sender == "Андрей":
-            message_widget.setStyleSheet("background-color: #DCF8C6; border-radius: 10px; margin: 2px;")
-            message_container.addStretch()
-            message_container.addWidget(message_widget)
-        else:
-            message_widget.setStyleSheet("background-color: #ECECEC; border-radius: 10px; margin: 2px;")
-            message_container.addWidget(message_widget)
-            message_container.addStretch()
-
-        # Устанавливаем минимальную ширину для сообщений
-        message_widget.setMinimumWidth(200)
-        message_widget.setMaximumWidth(300)  # Ограничиваем максимальную ширину
-
-        layout.addLayout(message_container)
+        message = {'sender_name': sender,'text': text}
+        message_widget = MessageWidget(message)
+        layout.addLayout(message_widget.message_container)
 
     def on_send_clicked(self):
         pass
