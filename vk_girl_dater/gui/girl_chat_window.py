@@ -10,29 +10,12 @@ class GirlChatWindow(QDialog):
     def __init__(self, girl_name="Екатерина"):
         super().__init__()
         self.girl_name = girl_name
+        
 
-        self.setWindowTitle(f"Чат с {girl_name}")
-        self.setGeometry(100, 100, 500, 600)
-        QtUtils.center(self)
 
         main_layout = QVBoxLayout()
-
         main_layout.addLayout(self.__get_header(girl_name))
-
-        chat_area = QScrollArea()
-        chat_area.setWidgetResizable(True)
-        chat_widget = QWidget()
-        chat_layout = QVBoxLayout(chat_widget)
-
-        self._add_message(chat_layout, "Андрей", "Привет как дела")
-        self._add_message(chat_layout, self.girl_name, "Неплохо, как сам?")
-        self._add_message(chat_layout, "Андрей", "Хорошо")
-
-        chat_layout.addStretch()
-        chat_widget.setLayout(chat_layout)
-        chat_area.setWidget(chat_widget)
-
-        main_layout.addWidget(chat_area, 1)
+        main_layout.addWidget(self.__get_chat_area())
 
         # Поле для ввода нового сообщения
         input_layout = QHBoxLayout()
@@ -54,6 +37,22 @@ class GirlChatWindow(QDialog):
         main_layout.addWidget(back_button)
 
         self.setLayout(main_layout)
+        self.setWindowTitle(f"Чат с {girl_name}")
+        self.setGeometry(100, 100, 500, 600)
+        QtUtils.center(self)
+
+    def __get_chat_area(self):
+        chat_area = QScrollArea()
+        chat_area.setWidgetResizable(True)
+        chat_widget = QWidget()
+        chat_layout = QVBoxLayout(chat_widget)
+        self._add_message(chat_layout, "Андрей", "Привет как дела")
+        self._add_message(chat_layout, self.girl_name, "Неплохо, как сам?")
+        self._add_message(chat_layout, "Андрей", "Хорошо")
+        chat_layout.addStretch()
+        chat_widget.setLayout(chat_layout)
+        chat_area.setWidget(chat_widget)
+        return chat_area
 
     def __get_header(self, girl_name):
         header_layout = QHBoxLayout()
