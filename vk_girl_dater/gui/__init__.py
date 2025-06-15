@@ -9,8 +9,8 @@ girls_view_model = [
     {
         'name': 'Мария',
         'messages': [
-            {'name': 'Андрей', 'text': 'Тест1'},
-            {'name': 'Мария', 'text': 'Тест2'}
+            {'name': 'Андрей', 'text': 'Тест3'},
+            {'name': 'Мария', 'text': 'Тест4'}
         ]
 
     }
