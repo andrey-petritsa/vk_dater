@@ -8,6 +8,15 @@ class MessageWidget(QWidget):
         message_layout = self.__get_message_layout(message)
         self.setLayout(message_layout)
 
+        self.message_container = self.__get_message_container(message)
+        self.__set_size()
+        
+
+    def __set_size(self):
+        self.setMinimumWidth(200)
+        self.setMaximumWidth(300)
+
+    def __get_message_container(self, message):
         message_container = QHBoxLayout()
         if message['sender_name'] == "Андрей":
             self.setStyleSheet("background-color: #DCF8C6; border-radius: 10px; margin: 2px;")
@@ -17,11 +26,7 @@ class MessageWidget(QWidget):
             self.setStyleSheet("background-color: #ECECEC; border-radius: 10px; margin: 2px;")
             message_container.addWidget(self)
             message_container.addStretch()
-
-        self.setMinimumWidth(200)
-        self.setMaximumWidth(300)
-
-        self.message_container = message_container
+        return message_container
 
     def __get_message_layout(self, message):
         message_layout = QVBoxLayout(self)
