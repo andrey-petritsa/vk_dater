@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QPushButton, QLab
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QColor
 
+from vk_girl_dater.gui.message_list_widget import MessageListWidget
 from vk_girl_dater.gui.message_widget import MessageWidget
 from vk_girl_dater.gui.qt_utils import QtUtils
 
@@ -47,17 +48,8 @@ class GirlChatWindow(QDialog):
         return message_input
 
     def __get_chat_area(self):
-        chat_area = QScrollArea()
-        chat_area.setWidgetResizable(True)
-        chat_widget = QWidget()
-        chat_layout = QVBoxLayout(chat_widget)
-        self.__add_message(chat_layout, "Андрей", "Привет как дела")
-        self.__add_message(chat_layout, "Екатерина", "Неплохо, как сам?")
-        self.__add_message(chat_layout, "Андрей", "Хорошо")
-        chat_layout.addStretch()
-        chat_widget.setLayout(chat_layout)
-        chat_area.setWidget(chat_widget)
-        return chat_area
+        widget = MessageListWidget()
+        return widget.chat_area
 
     def __get_header(self, girl_name):
         header_layout = QHBoxLayout()
