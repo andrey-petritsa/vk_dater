@@ -9,7 +9,6 @@ from vk_girl_dater.gui.qt_utils import QtUtils
 class GirlChatWindow(QDialog):
     def __init__(self, girl_name="Екатерина"):
         super().__init__()
-        self.girl_name = girl_name
         self.setLayout(self.__get_main_layout(girl_name))
 
         self.setWindowTitle(f"Чат с {girl_name}")
@@ -53,7 +52,7 @@ class GirlChatWindow(QDialog):
         chat_widget = QWidget()
         chat_layout = QVBoxLayout(chat_widget)
         self.__add_message(chat_layout, "Андрей", "Привет как дела")
-        self.__add_message(chat_layout, self.girl_name, "Неплохо, как сам?")
+        self.__add_message(chat_layout, "Екатерина", "Неплохо, как сам?")
         self.__add_message(chat_layout, "Андрей", "Хорошо")
         chat_layout.addStretch()
         chat_widget.setLayout(chat_layout)
