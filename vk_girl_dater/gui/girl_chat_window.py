@@ -1,9 +1,7 @@
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QScrollArea, QWidget, QTextEdit
-from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QColor
 
 from vk_girl_dater.gui.message_list_widget import MessageListWidget
-from vk_girl_dater.gui.message_widget import MessageWidget
 from vk_girl_dater.gui.qt_utils import QtUtils
 
 
