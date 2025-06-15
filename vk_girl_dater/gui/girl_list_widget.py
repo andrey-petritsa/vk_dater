@@ -22,7 +22,8 @@ class GirlListWidget(QListWidget):
 
     def on_item_clicked(self, item):
         main_window = self.parent()
-        self.chat_window = GirlChatWindow(gui.girls_view_model[0])
+        index = self.row(item)
+        self.chat_window = GirlChatWindow(gui.girls_view_model[index])
         main_window.hide()
         self.chat_window.exec()
         main_window.show()
