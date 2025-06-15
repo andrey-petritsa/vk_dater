@@ -19,7 +19,7 @@ class GirlChatWindow(QDialog):
     def __get_main_layout(self, girl_name):
         main_layout = QVBoxLayout()
         main_layout.addLayout(self.__get_header(girl_name))
-        main_layout.addWidget(self.__get_chat_area())
+        main_layout.addWidget(MessageListWidget())
         main_layout.addLayout(self.__get_input_layout())
         main_layout.addWidget(self.__get_back_button())
         return main_layout
@@ -46,10 +46,6 @@ class GirlChatWindow(QDialog):
         message_input.setFixedHeight(60)
         message_input.setPlaceholderText("Введите сообщение...")
         return message_input
-
-    def __get_chat_area(self):
-        widget = MessageListWidget()
-        return widget.chat_area
 
     def __get_header(self, girl_name):
         header_layout = QHBoxLayout()
