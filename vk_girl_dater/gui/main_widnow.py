@@ -1,5 +1,4 @@
-from PyQt6.QtWidgets import (QWidget, QListWidget, QHBoxLayout, QListWidgetItem)
-from PyQt6.QtCore import QRect, QPoint
+from PyQt6.QtWidgets import QWidget, QHBoxLayout
 
 from vk_girl_dater.gui.girl_list_widget import GirlListWidget
 from vk_girl_dater.gui.qt_utils import QtUtils
