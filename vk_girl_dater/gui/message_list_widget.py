@@ -9,9 +9,13 @@ class MessageListWidget(QScrollArea):
         wdg = QWidget()
         self.setWidgetResizable(True)
         layout = QVBoxLayout(wdg)
+        widgets = []
         for message in messages:
-            widget = MessageWidget(message)
+            widgets.append(MessageWidget(message))
+
+        for widget in widgets:
             layout.addLayout(widget.message_layout)
+
         layout.addStretch()
         self.setLayout(layout)
         self.setWidget(wdg)
