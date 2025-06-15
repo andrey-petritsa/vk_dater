@@ -11,7 +11,7 @@ class MessageListWidget(QScrollArea):
         chat_layout = QVBoxLayout(message_widget)
         for message in messages:
             widget = MessageWidget(message)
-            chat_layout.addLayout(widget.message_container)
+            chat_layout.addLayout(widget.message_layout)
         chat_layout.addStretch()
         self.setLayout(chat_layout)
         self.setWidget(message_widget)

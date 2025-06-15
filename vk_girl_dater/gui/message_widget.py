@@ -6,7 +6,7 @@ class MessageWidget(QWidget):
     def __init__(self, message):
         super().__init__()
         self.setLayout(self.__get_main_layout(message))
-        self.message_container = self.__get_message_container(message)
+        self.message_layout = self.__get_message_layout(message)
         self.__set_size()
 
 
@@ -14,7 +14,7 @@ class MessageWidget(QWidget):
         self.setMinimumWidth(200)
         self.setMaximumWidth(300)
 
-    def __get_message_container(self, message):
+    def __get_message_layout(self, message):
         layout = QHBoxLayout()
         if message['name'] == "Андрей":
             self.setStyleSheet("background-color: #DCF8C6; border-radius: 10px; margin: 2px;")
