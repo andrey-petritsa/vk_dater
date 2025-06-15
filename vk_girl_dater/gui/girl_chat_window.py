@@ -17,17 +17,7 @@ class GirlChatWindow(QDialog):
 
         main_layout = QVBoxLayout()
 
-        header_layout = QHBoxLayout()
-
-        avatar_label = self._create_avatar_label()
-        header_layout.addWidget(avatar_label)
-
-        name_label = QLabel(girl_name)
-        name_label.setStyleSheet("font-size: 18px; font-weight: bold;")
-        header_layout.addWidget(name_label)
-        header_layout.addStretch()
-
-        main_layout.addLayout(header_layout)
+        main_layout.addLayout(self.__get_header(girl_name))
 
         chat_area = QScrollArea()
         chat_area.setWidgetResizable(True)
@@ -64,6 +54,16 @@ class GirlChatWindow(QDialog):
         main_layout.addWidget(back_button)
 
         self.setLayout(main_layout)
+
+    def __get_header(self, girl_name):
+        header_layout = QHBoxLayout()
+        avatar_label = self._create_avatar_label()
+        header_layout.addWidget(avatar_label)
+        name_label = QLabel(girl_name)
+        name_label.setStyleSheet("font-size: 18px; font-weight: bold;")
+        header_layout.addWidget(name_label)
+        header_layout.addStretch()
+        return header_layout
 
     def _create_avatar_label(self):
         size = 70
