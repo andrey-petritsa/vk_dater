@@ -11,7 +11,7 @@ class GirlChatWindow(QDialog):
         super().__init__()
         self.girl_name = girl_name
         self.setLayout(self.__get_main_layout(girl_name))
-        
+
         self.setWindowTitle(f"Чат с {girl_name}")
         self.setGeometry(100, 100, 500, 600)
         QtUtils.center(self)
@@ -20,12 +20,15 @@ class GirlChatWindow(QDialog):
         main_layout = QVBoxLayout()
         main_layout.addLayout(self.__get_header(girl_name))
         main_layout.addWidget(self.__get_chat_area())
+        main_layout.addLayout(self.__get_input_layout())
+        main_layout.addWidget(self.__get_back_button())
+        return main_layout
+
+    def __get_input_layout(self):
         input_layout = QHBoxLayout()
         input_layout.addWidget(self.__get_message_input())
         input_layout.addWidget(self.__get_send_button())
-        main_layout.addLayout(input_layout)
-        main_layout.addWidget(self.__get_back_button())
-        return main_layout
+        return input_layout
 
     def __get_back_button(self):
         back_button = QPushButton("Назад")
