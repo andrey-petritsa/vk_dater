@@ -13,7 +13,7 @@ class StubVkDateApi:
 
 class SpyVkDateApi:
     def __init__(self):
-        self.last_sended_message = ""
+        self.last_sended_message = None
 
     def send_message(self, message):
         self.last_sended_message = message

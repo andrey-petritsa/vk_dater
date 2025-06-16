@@ -8,9 +8,10 @@ def test_adapt_send_message():
     spy = SpyVkDateApi()
     adapter = VkDateApiAdapter(spy)
 
-    adapter.send_message('привет как дела?')
+    msg = {'user_id': 1, 'text': 'привет как дела?'}
+    adapter.send_message(msg)
 
-    assert 'привет как дела?' == spy.last_sended_message
+    assert 'привет как дела?' == spy.last_sended_message['text']
 
 def test_adapt_get_chats():
     adapter = VkDateApiAdapter(StubVkDateApi())
