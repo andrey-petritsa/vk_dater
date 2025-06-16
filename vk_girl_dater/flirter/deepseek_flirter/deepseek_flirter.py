@@ -1,3 +1,4 @@
+import json
 from test.tests.vk_date_platform.settings import podcat_promt
 
 
@@ -9,6 +10,12 @@ class DeepseekFlirter:
         deepseek_messages = self.__get_deepseek_messages(chat)
         response = self.__deepseek_api.get_chat_response(deepseek_messages)
         return self._get_text_from(response)
+
+    def guess_next_message_options(self, chat):
+        deepseek_messages = self.__get_deepseek_messages(chat)
+        response = self.__deepseek_api.get_chat_response(deepseek_messages)
+        text = self._get_text_from(response)
+        return json.loads(text)
 
     def __get_deepseek_messages(self, chat):
         promt_message = {"role":"system", "content":f"{chat['promt']}"}

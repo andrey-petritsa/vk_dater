@@ -26,6 +26,9 @@ class SpyFlirter():
         self.last_messages = chat['messages']
         return "привет как дела?"
 
+    def guess_next_message_options(self, chat):
+        return ['опция1', 'опция2']
+
     def get_last_sended_chat(self):
         msgs = []
 
