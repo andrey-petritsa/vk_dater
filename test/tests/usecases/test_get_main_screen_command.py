@@ -18,8 +18,7 @@ class GetMainScreenCommand:
 
     def __convert_to_messages(self, chat):
         messages = []
-        msgs = chat['messages']
-        for message in msgs:
+        for message in chat['messages']:
             messages.append(self.__convert_to_message(message))
         return messages
 
