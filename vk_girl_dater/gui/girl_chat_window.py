@@ -95,5 +95,4 @@ class GirlChatWindow(QDialog):
                 'chat': self.chat
             },
         }
-        options = EventController.handle_event(event)
-        self.options = options
+        self.options = EventController.handle_event(event)
