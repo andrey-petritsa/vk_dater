@@ -10,23 +10,25 @@ class GetMainScreenCommand:
 
         con_chats = []
         for chat in chats:
-            messages = []
-            msgs = chat['messages']
-            self.__chat_name = chats[0]['name']
-            for message in msgs:
-                messages.append(self.__convert_to_message(message))
-            chat = {'name': chats[0]['name'], 'messages': messages}
+            self.__chat = chat
+            chat = {'name':chat['name'], 'messages':self.__convert_to_messages(chat)}
             con_chats.append(chat)
 
         return con_chats
 
+    def __convert_to_messages(self, chat):
+        messages = []
+        msgs = chat['messages']
+        for message in msgs:
+            messages.append(self.__convert_to_message(message))
+        return messages
 
     def __convert_to_message(self, message):
         if message['user'] == 'bot':
             name = 'Бот'
             position = 'left'
         else:
-            name = self.__chat_name
+            name = self.__chat['name']
             position = 'right'
         msg = {'name':name, 'text':message['text'], 'position':position}
         return msg
