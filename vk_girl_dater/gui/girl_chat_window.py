@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QPushButton, QLab
 from PyQt6.QtGui import QPixmap, QColor
 
 from vk_girl_dater.gui.choice_widget import ChoiceWidget
+from vk_girl_dater.gui.event_controller import EventController
 from vk_girl_dater.gui.message_list_widget import MessageListWidget
 from vk_girl_dater.gui.qt_utils import QtUtils
 
@@ -70,7 +71,14 @@ class GirlChatWindow(QDialog):
         return avatar_label
 
     def on_send_clicked(self):
-        pass
+        event = {
+            'name': 'send_message',
+            'context': {
+                'text': 'Hello',
+                'chat_id': 1
+            }
+        }
+        EventController.handle_event(event)
 
     def on_back_clicked(self):
         self.accept()
