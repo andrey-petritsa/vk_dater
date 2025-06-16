@@ -7,20 +7,19 @@ class GetMainScreenCommand:
 
     def execute(self):
         chats = self.flirt_platform.get_chats()
-        messages = []
 
-        chat = chats[0]
-        msgs = chat['messages']
-        self.__chat_name = chats[0]['name']
-        for message in msgs:
-            messages.append(self.__convert_to_message(message))
+        con_chats = []
+        for chat in chats:
+            messages = []
+            msgs = chat['messages']
+            self.__chat_name = chats[0]['name']
+            for message in msgs:
+                messages.append(self.__convert_to_message(message))
+            chat = {'name': chats[0]['name'], 'messages': messages}
+            con_chats.append(chat)
 
-        return [
-            {
-                'name': chats[0]['name'],
-                'messages': messages,
-            },
-        ]
+        return con_chats
+
 
     def __convert_to_message(self, message):
         if message['user'] == 'bot':
