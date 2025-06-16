@@ -14,7 +14,7 @@ class GetMainScreenCommand:
         con_chats = []
         for chat in chats:
             self.__chat = chat
-            chat = {'name':chat['name'], 'messages':self.__convert_to_messages(chat)}
+            chat['messages'] = self.__convert_to_messages(chat)
             con_chats.append(chat)
         return con_chats
 
@@ -44,6 +44,7 @@ class TestGetMainScreenCommand:
         e_screen = [
             {
                 'name': 'Анна',
+                'id': 39277097,
                 'messages': [
                     {'name': 'Бот', 'text': 'Тест1', 'position': 'left'},
                     {'name': 'Анна', 'text': 'Тест2', 'position': 'right'}
