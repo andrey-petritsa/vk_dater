@@ -14,7 +14,7 @@ class FlirtWithGirlCommand:
         self.flirt_platform.send_message(msg)
 
     def __get_flirt_message(self, chat):
-        chat['promt'] = settings.promt
+        chat['promt'] = settings.auto_mode_promt
         return {'chat_id':chat['id'], 'text':self.flirter.guess_next_message(chat)}
 
     def _get_chats_for_flirt(self):

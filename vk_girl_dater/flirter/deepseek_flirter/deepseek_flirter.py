@@ -1,24 +1,27 @@
 import json
-from test.tests.vk_date_platform.settings import guess_message_constant
+from test.tests.vk_date_platform.settings import guess_message_constant, auto_mode_promt, hand_mode_promt
 
 
 class DeepseekFlirter:
     def __init__(self, deepseek_api):
         self.__deepseek_api = deepseek_api
+        self.promts = {
+            'auto': auto_mode_promt, 'hand': hand_mode_promt
+        }
 
     def guess_next_message(self, chat):
-        deepseek_messages = self.__get_deepseek_messages(chat)
+        deepseek_messages = self.__get_deepseek_messages(chat, self.promts['auto'])
         response = self.__deepseek_api.get_chat_response(deepseek_messages)
         return self._get_text_from(response)
 
     def guess_next_message_options(self, chat):
-        deepseek_messages = self.__get_deepseek_messages(chat)
+        deepseek_messages = self.__get_deepseek_messages(chat, self.promts['hand'])
         response = self.__deepseek_api.get_chat_response(deepseek_messages)
         text = self._get_text_from(response)
         return json.loads(text)
 
-    def __get_deepseek_messages(self, chat):
-        promt_message = {"role":"system", "content":f"{chat['promt']}"}
+    def __get_deepseek_messages(self, chat, promt):
+        promt_message = {"role":"system", "content":promt}
         if len(chat['messages']) == 0:
             deepseek_messages = self.__get_deepseek_message_for_empty_chat()
         else:

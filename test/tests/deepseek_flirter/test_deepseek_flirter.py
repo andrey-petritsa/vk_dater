@@ -5,6 +5,10 @@ from vk_girl_dater.flirter.deepseek_flirter.deepseek_flirter import DeepseekFlir
 class DeepseekFlirterTestable(DeepseekFlirter):
     def __init__(self, deepseek_api):
         super().__init__(deepseek_api)
+        self.promts = {
+            'auto': 'промт для авто режима',
+            'hand': 'промт для ручного режима'
+        }
         self.return_mode = "plain_text"
 
     def _get_text_from(self, response):
@@ -18,17 +22,17 @@ class TestDeepseekFlirter:
     def test_guess_next_message(self):
         deepseek_api = SpyDeepseekApi()
         flirter = DeepseekFlirterTestable(deepseek_api)
+
         chat = {
             'messages': [
                 {'text': 'привет как дела?', 'user': 'bot'},
                 {'text': 'все хорошо', 'user': 'girl'},
             ],
-            'promt': 'промт для ai'
         }
         flirter.guess_next_message(chat)
 
         assert deepseek_api.last_messages == [
-            {'content': 'промт для ai', 'role': 'system'},
+            {'content': 'промт для авто режима', 'role': 'system'},
             {'content': 'парень(бот): привет как дела?', 'role': 'assistant'},
             {'content': 'девушка: все хорошо', 'role': 'user'},
         ]
@@ -36,14 +40,11 @@ class TestDeepseekFlirter:
     def test_guess_next_message__when_chat_has_no_messages(self):
         deepseek_api = SpyDeepseekApi()
         flirter = DeepseekFlirterTestable(deepseek_api)
-        chat = {
-            'messages': [],
-            'promt': 'промт для ai'
-        }
+        chat = {'messages': []}
         flirter.guess_next_message(chat)
 
         assert deepseek_api.last_messages == [
-            {'content': 'промт для ai', 'role': 'system'},
+            {'content': 'промт для авто режима', 'role': 'system'},
             {'content': '*GUESS_MESSAGE', 'role': 'user'}
         ]
 
@@ -56,13 +57,12 @@ class TestDeepseekFlirter:
                 {'text': 'привет как дела?', 'user': 'bot'},
                 {'text': 'все хорошо', 'user': 'girl'},
             ],
-            'promt': 'промт для ai'
         }
 
         flirter.guess_next_message_options(chat)
 
         assert deepseek_api.last_messages == [
-            {'content': 'промт для ai', 'role': 'system'},
+            {'content': 'промт для ручного режима', 'role': 'system'},
             {'content': 'парень(бот): привет как дела?', 'role': 'assistant'},
             {'content': 'девушка: все хорошо', 'role': 'user'},
         ]
