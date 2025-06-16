@@ -12,6 +12,8 @@ class GirlChatWindow(QDialog):
         super().__init__()
         self.chat = chat
         self.message_input = None
+        self.options = []
+
         self.setLayout(self.__get_main_layout())
 
         self.setWindowTitle(f"Чат с {self.chat['name']}")
@@ -23,7 +25,7 @@ class GirlChatWindow(QDialog):
         main_layout.addLayout(self.__get_header())
         main_layout.addWidget(MessageListWidget(self.chat['messages']))
         main_layout.addLayout(self.__get_input_layout())
-        main_layout.addWidget(ChoiceWidget(self.chat['options']))
+        main_layout.addWidget(ChoiceWidget(self.options))
         main_layout.addWidget(self.__get_back_button())
         return main_layout
 
@@ -84,3 +86,14 @@ class GirlChatWindow(QDialog):
 
     def on_back_clicked(self):
         self.accept()
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        event = {
+            'name': 'show_options',
+            'context': {
+                'chat': self.chat
+            },
+        }
+        options = EventController.handle_event(event)
+        self.options = options
