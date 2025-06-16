@@ -8,12 +8,12 @@ from vk_girl_dater.gui.qt_utils import QtUtils
 
 
 class MainWindow(QWidget):
-    def __init__(self):
+    def __init__(self, girls_view_model):
         super().__init__()
         self.setGeometry(100, 100, 400, 500)
         QtUtils.center(self)
 
-        girls_list = GirlListWidget()
+        girls_list = GirlListWidget(girls_view_model)
         main_layout = QHBoxLayout()
         main_layout.addWidget(girls_list)
         self.setLayout(main_layout)
