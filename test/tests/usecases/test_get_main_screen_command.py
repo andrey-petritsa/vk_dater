@@ -8,12 +8,14 @@ class GetMainScreenCommand:
     def execute(self):
         chats = self.flirt_platform.get_chats()
 
+        return self.__convert_chats(chats)
+
+    def __convert_chats(self, chats):
         con_chats = []
         for chat in chats:
             self.__chat = chat
             chat = {'name':chat['name'], 'messages':self.__convert_to_messages(chat)}
             con_chats.append(chat)
-
         return con_chats
 
     def __convert_to_messages(self, chat):
