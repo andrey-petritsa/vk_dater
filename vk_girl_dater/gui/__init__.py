@@ -14,6 +14,5 @@ girls_view_model = [
             {'name': 'Мария', 'text': 'Тест4', 'position': 'right'}
         ],
         'options': ['option3', 'option4']
-
     }
 ]
