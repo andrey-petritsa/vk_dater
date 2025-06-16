@@ -4,14 +4,16 @@ girls_view_model = [
         'messages': [
             {'name': 'Андрей', 'text': 'Тест1', 'position': 'left'},
             {'name': 'Анна', 'text': 'Тест2', 'position': 'right'}
-        ]
+        ],
+        'options': ['option1', 'option2']
     },
     {
         'name': 'Мария',
         'messages': [
             {'name': 'Андрей', 'text': 'Тест3', 'position': 'left'},
             {'name': 'Мария', 'text': 'Тест4', 'position': 'right'}
-        ]
+        ],
+        'options': ['option3', 'option4']
 
     }
 ]
