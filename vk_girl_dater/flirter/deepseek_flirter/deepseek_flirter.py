@@ -1,5 +1,5 @@
 import json
-from test.tests.vk_date_platform.settings import podcat_promt
+from test.tests.vk_date_platform.settings import guess_message_constant
 
 
 class DeepseekFlirter:
@@ -26,7 +26,7 @@ class DeepseekFlirter:
         return [promt_message] + deepseek_messages
 
     def __get_deepseek_message_for_empty_chat(self):
-        return [{'content':podcat_promt, 'role':'user'}]
+        return [{'content':guess_message_constant, 'role':'user'}]
 
     def __get_deepseek_messages_for_non_empty_chat(self, chat):
         return [{'role':self.__get_role_by(msg), 'content':self.__get_message_text(msg)} for msg in chat['messages']]

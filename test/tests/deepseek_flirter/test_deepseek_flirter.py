@@ -1,5 +1,5 @@
 from test.tests.deepseek_flirter.mocks import SpyDeepseekApi
-from test.tests.vk_date_platform.settings import podcat_promt
+from test.tests.vk_date_platform.settings import guess_message_constant
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_flirter import DeepseekFlirter
 
 class DeepseekFlirterTestable(DeepseekFlirter):
