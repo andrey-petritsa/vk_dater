@@ -1,5 +1,6 @@
 girls_view_model = [
     {
+        'id': 1,
         'name': 'Анна',
         'messages': [
             {'name': 'Андрей', 'text': 'Тест1', 'position': 'left'},
@@ -8,6 +9,7 @@ girls_view_model = [
         'options': ['option1', 'option2']
     },
     {
+        'id': 2,
         'name': 'Мария',
         'messages': [
             {'name': 'Андрей', 'text': 'Тест3', 'position': 'left'},

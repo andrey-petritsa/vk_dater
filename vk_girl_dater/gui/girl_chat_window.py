@@ -11,6 +11,7 @@ class GirlChatWindow(QDialog):
     def __init__(self, chat):
         super().__init__()
         self.chat = chat
+        self.message_input = None
         self.setLayout(self.__get_main_layout())
 
         self.setWindowTitle(f"Чат с {self.chat['name']}")
@@ -44,10 +45,10 @@ class GirlChatWindow(QDialog):
         return send_button
 
     def __get_message_input(self):
-        message_input = QTextEdit()
-        message_input.setFixedHeight(60)
-        message_input.setPlaceholderText("Введите сообщение...")
-        return message_input
+        self.message_input = QTextEdit()
+        self.message_input.setFixedHeight(60)
+        self.message_input.setPlaceholderText("Введите сообщение...")
+        return self.message_input
 
     def __get_header(self):
         header_layout = QHBoxLayout()
@@ -71,14 +72,15 @@ class GirlChatWindow(QDialog):
         return avatar_label
 
     def on_send_clicked(self):
+        message_text = self.message_input.toPlainText().strip()
         event = {
             'name': 'send_message',
             'context': {
-                'text': 'Hello',
-                'chat_id': 1
+                'text': message_text, 'chat_id': self.chat['id']
             }
         }
         EventController.handle_event(event)
+        self.message_input.clear()
 
     def on_back_clicked(self):
         self.accept()
