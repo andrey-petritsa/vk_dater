@@ -12,7 +12,7 @@ class MessageWidget(QWidget):
 
     def __get_message_layout(self, message):
         layout = QHBoxLayout()
-        if message['name'] == "Андрей":
+        if message['position'] == "left":
             self.content_widget.setStyleSheet("background-color: #DCF8C6; border-radius: 10px; margin: 2px;")
             layout.addStretch()
             layout.addWidget(self.content_widget)

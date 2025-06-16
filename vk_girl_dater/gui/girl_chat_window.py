@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QScrollArea, QWidget, QTextEdit
 from PyQt6.QtGui import QPixmap, QColor
 
+from vk_girl_dater.gui.choice_widget import ChoiceWidget
 from vk_girl_dater.gui.message_list_widget import MessageListWidget
 from vk_girl_dater.gui.qt_utils import QtUtils
 
@@ -20,6 +21,7 @@ class GirlChatWindow(QDialog):
         main_layout.addLayout(self.__get_header())
         main_layout.addWidget(MessageListWidget(self.chat['messages']))
         main_layout.addLayout(self.__get_input_layout())
+        main_layout.addWidget(ChoiceWidget(['тест1', 'тест2']))
         main_layout.addWidget(self.__get_back_button())
         return main_layout
 

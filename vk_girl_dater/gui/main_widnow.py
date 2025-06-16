@@ -1,3 +1,6 @@
+from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QRadioButton, 
+                            QButtonGroup, QTextEdit, QHBoxLayout)
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QHBoxLayout
 
 from vk_girl_dater.gui.girl_list_widget import GirlListWidget
