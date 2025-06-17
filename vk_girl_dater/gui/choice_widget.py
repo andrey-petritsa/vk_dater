@@ -35,4 +35,4 @@ class ChoiceWidget(QWidget):
 
     def on_button_clicked(self, button):
         index = self.button_group.id(button)
-        print(self.options[index])
+        self.parent().message_input.setPlainText(self.options[index])
