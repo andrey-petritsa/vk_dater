@@ -33,7 +33,8 @@ class GirlChatWindow(QDialog):
         return main_layout
 
     def __get_message_list(self):
-        return MessageListWidget(self.chat['messages'])
+        self.message_list = MessageListWidget(self.chat['messages'])
+        return self.message_list
 
     def __get_choice_widget(self):
         self.choice_widget = ChoiceWidget(self.options)
