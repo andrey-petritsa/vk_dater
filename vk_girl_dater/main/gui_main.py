@@ -26,7 +26,6 @@ if __name__ == "__main__":
     setup_usecases()
     app = QApplication(sys.argv)
     chats_view_model = usecases.get_chats_command.execute()
-    #chats_view_model = gui.chats_view_model
     window = MainWindow(chats_view_model)
     window.show()
     sys.exit(app.exec())
