@@ -43,13 +43,13 @@ class DeepseekFlirter:
         return text
 
     def __get_role_by(self, message):
-        if message['user'] == 'girl':
-            return 'user'
-        if message['user'] == 'bot':
+        if message['name'] == 'bot':
             return 'assistant'
+        else:
+            return 'user'
 
     def __get_tag_by(self, message):
-        if message['user'] == 'girl':
-            return 'девушка'
-        if message['user'] == 'bot':
+        if message['name'] == 'bot':
             return 'парень(бот)'
+        else:
+            return 'девушка'

@@ -1,5 +1,4 @@
 from test.tests.deepseek_flirter.mocks import SpyDeepseekApi
-from test.tests.vk_date_platform.settings import guess_message_constant
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_flirter import DeepseekFlirter
 
 class DeepseekFlirterTestable(DeepseekFlirter):
@@ -25,8 +24,8 @@ class TestDeepseekFlirter:
 
         chat = {
             'messages': [
-                {'text': 'привет как дела?', 'user': 'bot'},
-                {'text': 'все хорошо', 'user': 'girl'},
+                {'text': 'привет как дела?', 'name': 'bot'},
+                {'text': 'все хорошо', 'name': 'анна'},
             ],
         }
         flirter.guess_next_message(chat)
@@ -54,8 +53,8 @@ class TestDeepseekFlirter:
         flirter.return_mode = 'json'
         chat = {
             'messages': [
-                {'text': 'привет как дела?', 'user': 'bot'},
-                {'text': 'все хорошо', 'user': 'girl'},
+                {'text': 'привет как дела?', 'name': 'bot'},
+                {'text': 'все хорошо', 'name': 'анна'},
             ],
         }
 
