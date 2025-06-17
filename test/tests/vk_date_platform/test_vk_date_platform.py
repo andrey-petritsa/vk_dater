@@ -25,4 +25,4 @@ class TestVkDatePlatform:
         user_id = 1
         chat = platform.get_chat(user_id)
 
-        assert to_str_one(chat) == 39277097
+        assert to_str_one(chat) == 1

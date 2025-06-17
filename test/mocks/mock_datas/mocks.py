@@ -10,9 +10,6 @@ class StubVkDateApi:
     def get_chats(self):
         return get_json_response(get_chats_response.response)
 
-    def get_chat(self, user_id):
-        return get_json_response(get_chats_response.response['chats'][2])
-
 
 class SpyVkDateApi:
     def __init__(self):
