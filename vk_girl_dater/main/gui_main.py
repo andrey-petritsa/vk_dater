@@ -16,6 +16,7 @@ def setup_usecases():
     usecases.get_message_options_command = factory.create_get_message_options_command()
     usecases.send_message_command = factory.create_send_message_command()
     usecases.get_chats_command = factory.create_get_main_screen_command()
+    usecases.get_chat_command = factory.create_get_chat_command()
 
 def setup_utils():
     gui.event_controller = EventController()

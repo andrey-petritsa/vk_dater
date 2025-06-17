@@ -1,3 +1,4 @@
+from test.tests.usecases.test_get_chat_command import GetChatCommand
 from test.tests.vk_date_platform.settings import deepseek_token
 from test.utils.vk_date_token_extractor import VkDateTokenExtractor
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_api import DeepseekApi
@@ -27,4 +28,8 @@ class UsecaseFactory:
 
     def create_get_main_screen_command(self):
         cmd = GetChatsCommand(self.platform)
+        return cmd
+
+    def create_get_chat_command(self):
+        cmd = GetChatCommand(self.platform)
         return cmd
