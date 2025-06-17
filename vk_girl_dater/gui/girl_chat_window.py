@@ -25,15 +25,15 @@ class GirlChatWindow(QDialog):
     def __get_main_layout(self):
         main_layout = QVBoxLayout()
         main_layout.addLayout(self.__get_header())
-        main_layout.addWidget(self.__get_message_list())
+        main_layout.addWidget(self.__get_message_list(self.chat['messages']))
         main_layout.addLayout(self.__get_input_layout())
         main_layout.addWidget(self.__get_choice_widget())
         main_layout.addWidget(self.__get_back_button())
 
         return main_layout
 
-    def __get_message_list(self):
-        self.message_list = MessageListWidget(self.chat['messages'])
+    def __get_message_list(self, messages):
+        self.message_list = MessageListWidget(messages)
         return self.message_list
 
     def __get_choice_widget(self):
@@ -101,7 +101,9 @@ class GirlChatWindow(QDialog):
             }
         }
         chat = gui.event_controller.handle_event(get_chat_event)
-
+        self.layout().removeWidget(self.message_list)
+        message_list = self.__get_message_list(chat['messages'])
+        self.layout().insertWidget(1, message_list)
 
         self.message_input.clear()
 
