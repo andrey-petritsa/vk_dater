@@ -11,3 +11,7 @@ class EventController:
         if event['name'] == 'send_message':
             message = {'text': event['context']['text'], 'user_id': event['context']['user_id']}
             return usecases.send_message_command.execute(message)
+
+        if event['name'] == 'get_chat':
+            user_id = 'text': event['context']['user_id']
+            return usecases.get_chat_command.execute(user_id)

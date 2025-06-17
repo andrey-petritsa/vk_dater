@@ -98,7 +98,7 @@ class GirlChatWindow(QDialog):
         }
         chat = gui.event_controller.handle_event(get_chat_event)
 
-        
+
         self.message_input.clear()
 
     def on_back_clicked(self):
