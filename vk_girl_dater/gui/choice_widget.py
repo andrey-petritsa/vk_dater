@@ -10,20 +10,21 @@ class ChoiceWidget(QWidget):
         self.button_group = QButtonGroup()
 
         for option in options:
-            radio = QRadioButton()
-            self.button_group.addButton(radio)
-            text_edit = self.__get_text_edit(option)
-
             option_widget = QWidget()
-            option_layout = QHBoxLayout()
-            option_layout.addWidget(radio)
-            option_layout.addWidget(text_edit)
-
-            option_widget.setLayout(option_layout)
+            option_widget.setLayout(self.__get_option_layout(option))
             main_layout.addWidget(option_widget)
 
         self.button_group.buttonClicked.connect(self.on_button_clicked)
         self.setLayout(main_layout)
+
+    def __get_option_layout(self, option):
+        radio = QRadioButton()
+        self.button_group.addButton(radio)
+        text_edit = self.__get_text_edit(option)
+        option_layout = QHBoxLayout()
+        option_layout.addWidget(radio)
+        option_layout.addWidget(text_edit)
+        return option_layout
 
     def __get_text_edit(self, option):
         text_edit = QTextEdit()
