@@ -10,23 +10,21 @@ from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDateApiAdapter
 
 
 class UsecaseFactory:
-    vk_date_api = VkDateApi()
-    vk_date_api.token = VkDateTokenExtractor.extract()
-    platform = VkDateApiAdapter(vk_date_api)
-    deepseek_api = DeepseekApi(deepseek_token)
-    flirter = DeepseekFlirter(deepseek_api)
+    def __init__(self):
+        self.vk_date_api = VkDateApi()
+        self.vk_date_api.token = VkDateTokenExtractor.extract()
+        self.platform = VkDateApiAdapter(self.vk_date_api)
+        self.deepseek_api = DeepseekApi(deepseek_token)
+        self.flirter = DeepseekFlirter(self.deepseek_api)
 
-    @classmethod
-    def create_get_message_options_command(cls):
-        cmd = GetMessageOptionsCommand(cls.flirter)
+    def create_get_message_options_command(self):
+        cmd = GetMessageOptionsCommand(self.flirter)
         return cmd
 
-    @classmethod
-    def create_send_message_command(cls):
-        cmd = SendMessageCommand(cls.platform)
+    def create_send_message_command(self):
+        cmd = SendMessageCommand(self.platform)
         return cmd
 
-    @classmethod
-    def create_get_main_screen_command(cls):
-        cmd = GetChatsCommand(cls.platform)
+    def create_get_main_screen_command(self):
+        cmd = GetChatsCommand(self.platform)
         return cmd
