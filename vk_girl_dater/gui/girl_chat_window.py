@@ -5,6 +5,7 @@ from vk_girl_dater.gui.choice_widget import ChoiceWidget
 from vk_girl_dater.gui.event_controller import EventController
 from vk_girl_dater.gui.message_list_widget import MessageListWidget
 from vk_girl_dater.gui.qt_utils import QtUtils
+from vk_girl_dater.gui.stub_event_controller import StubEventController
 
 
 class GirlChatWindow(QDialog):
@@ -101,7 +102,7 @@ class GirlChatWindow(QDialog):
             },
         }
 
-        self.options = EventController.handle_event(event)
+        self.options = StubEventController.handle_event(event)
         self.layout().removeWidget(self.choice_widget)
         self.choice_widget = ChoiceWidget(self.options)
         self.layout().insertWidget(self.layout().count() -1, self.choice_widget)
