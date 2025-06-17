@@ -85,7 +85,7 @@ class GirlChatWindow(QDialog):
         event = {
             'name': 'send_message',
             'context': {
-                'text': message_text, 'chat_id': self.chat['id']
+                'text': message_text, 'user_id': self.chat['id']
             }
         }
         gui.event_controller.handle_event(event)

@@ -22,21 +22,21 @@ class VkDateApiAdapter:
         return chats
 
     def __convert_to_chat(self, vk_api_chat):
-        chat_id = vk_api_chat['user_id']
+        user_id = vk_api_chat['user_id']
 
         if self.__is_service_chat(vk_api_chat):
             return self.service_chat
 
         user_name = vk_api_chat["user"]["name"]
         return {
-            "id" : chat_id,
+            "id" : user_id,
             "name" : user_name,
-            "messages": self.__get_messages(chat_id)
+            "messages": self.__get_messages(user_id)
         }
 
-    def __get_messages(self, chat_id):
+    def __get_messages(self, user_id):
         messages = []
-        get_history_response = self.__vk_date_api.get_history(chat_id)
+        get_history_response = self.__vk_date_api.get_history(user_id)
         get_history_response = get_history_response.json()
         for vk_message in get_history_response['messages']:
             messages.append(self.__convert_to_message(vk_message))

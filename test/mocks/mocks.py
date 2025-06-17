@@ -45,7 +45,7 @@ class SpyFlirtPlatform:
         self.chats = []
 
     def send_message(self, message):
-        str_msg = f'{message["chat_id"]} {message["text"]}'
+        str_msg = f'{message["user_id"]} {message["text"]}'
         self.sended_messages.append(str_msg)
 
     def get_chats(self):
@@ -61,6 +61,6 @@ class SpyChatRepository:
     def save(self, chat):
         self.is_save_called = True
 
-    def find_chat(self, chat_id):
+    def find_chat(self, user_id):
         self.is_find_chat_called = True
 

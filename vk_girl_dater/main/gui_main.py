@@ -1,6 +1,7 @@
 import sys
 from PyQt6.QtWidgets import QApplication
 
+from vk_girl_dater.gui.event_controller import EventController
 from vk_girl_dater.gui.main_widnow import MainWindow
 import vk_girl_dater.gui as gui
 import vk_girl_dater.utils as utils
@@ -17,7 +18,7 @@ def setup_usecases():
     usecases.get_chats_command = factory.create_get_main_screen_command()
 
 def setup_utils():
-    gui.event_controller = StubEventController()
+    gui.event_controller = EventController()
     utils.logger = ConsoleLogger()
 
 if __name__ == "__main__":

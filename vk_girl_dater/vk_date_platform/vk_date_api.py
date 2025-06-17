@@ -40,7 +40,7 @@ class VkDateApi:
 
     def __make_send_message_request(self, message):
         fields = {
-            "user_id": str(message['chat_id']),
+            "user_id": str(message['user_id']),
             "text": message['text'],
             "_token": self.token,
             "_v": "1.13",

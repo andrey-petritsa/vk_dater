@@ -4,7 +4,7 @@ from test.utils.web_utils import get_json_response
 
 
 class StubVkDateApi:
-    def get_history(self, chat_id):
+    def get_history(self, user_id):
         return get_json_response(get_history_response.response)
 
     def get_chats(self):
