@@ -6,7 +6,7 @@ class ChoiceWidget(QWidget):
     def __init__(self, options):
         super().__init__()
 
-        layout = QVBoxLayout()
+        main_layout = QVBoxLayout()
         self.button_group = QButtonGroup()
 
         for i, option in enumerate(options):
@@ -21,10 +21,10 @@ class ChoiceWidget(QWidget):
             text_edit = self.__get_text_edit(option)
             option_layout.addWidget(text_edit)
 
-            layout.addWidget(option_widget)
+            main_layout.addWidget(option_widget)
 
         self.button_group.buttonClicked.connect(self.on_button_clicked)
-        self.setLayout(layout)
+        self.setLayout(main_layout)
 
     def __get_text_edit(self, option):
         text_edit = QTextEdit()
