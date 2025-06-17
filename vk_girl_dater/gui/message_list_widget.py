@@ -7,9 +7,13 @@ class MessageListWidget(QScrollArea):
     def __init__(self, messages):
         super().__init__()
         self.setWidgetResizable(True)
-        layout = QVBoxLayout()
+
+        container = QWidget()
+        layout = QVBoxLayout(container)
+
         for message in messages:
             layout.addWidget(MessageWidget(message))
 
         layout.addStretch()
-        self.setLayout(layout)
+        self.setWidget(container)
+        self.setMinimumHeight(600)
