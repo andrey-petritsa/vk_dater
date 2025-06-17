@@ -21,6 +21,13 @@ class VkDatePlatform:
 
         return chats
 
+    def get_chat(self, user_id):
+        get_chat_response = self.__vk_date_api.get_chat(user_id)
+        vk_chat = get_chat_response.json()
+        if not self.__is_service_chat(vk_chat) and not self.__is_invalid_chat(vk_chat):
+            return self.__convert_to_chat(vk_chat)
+        raise Exception(f"Chat {user_id} not found")
+
     def __convert_to_chat(self, vk_api_chat):
         user_id = vk_api_chat['user_id']
 

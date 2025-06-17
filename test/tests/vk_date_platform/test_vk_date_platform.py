@@ -1,7 +1,7 @@
 
 from test.mocks.mock_datas.mocks import StubVkDateApi, SpyVkDateApi
 from test.utils.chat_utils import to_str_one
-from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDatePlatform
+from vk_girl_dater.vk_date_platform.vk_date_platform import VkDatePlatform
 
 
 class TestVkDatePlatform:
@@ -19,3 +19,10 @@ class TestVkDatePlatform:
         chats = platform.get_chats()
 
         assert to_str_one(chats[0]) == 39277097
+
+    def test_get_chat(self):
+        platform = VkDatePlatform(StubVkDateApi())
+        user_id = 1
+        chat = platform.get_chat(user_id)
+
+        assert to_str_one(chat) == 39277097

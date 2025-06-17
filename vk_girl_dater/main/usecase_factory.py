@@ -6,7 +6,7 @@ from vk_girl_dater.usecases.get_chats_command import GetChatsCommand
 from vk_girl_dater.usecases.get_message_options_command import GetMessageOptionsCommand
 from vk_girl_dater.usecases.send_message_command import SendMessageCommand
 from vk_girl_dater.vk_date_platform.vk_date_api import VkDateApi
-from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDatePlatform
+from vk_girl_dater.vk_date_platform.vk_date_platform import VkDatePlatform
 
 
 class UsecaseFactory:
