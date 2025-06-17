@@ -6,14 +6,14 @@ from vk_girl_dater.usecases.get_chats_command import GetChatsCommand
 from vk_girl_dater.usecases.get_message_options_command import GetMessageOptionsCommand
 from vk_girl_dater.usecases.send_message_command import SendMessageCommand
 from vk_girl_dater.vk_date_platform.vk_date_api import VkDateApi
-from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDateApiAdapter
+from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDatePlatform
 
 
 class UsecaseFactory:
     def __init__(self):
         self.vk_date_api = VkDateApi()
         self.vk_date_api.token = VkDateTokenExtractor.extract()
-        self.platform = VkDateApiAdapter(self.vk_date_api)
+        self.platform = VkDatePlatform(self.vk_date_api)
         self.deepseek_api = DeepseekApi(deepseek_token)
         self.flirter = DeepseekFlirter(self.deepseek_api)
 

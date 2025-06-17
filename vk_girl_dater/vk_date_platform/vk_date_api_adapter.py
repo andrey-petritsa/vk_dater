@@ -1,4 +1,4 @@
-class VkDateApiAdapter:
+class VkDatePlatform:
     service_chat = {
         "id":1,
         "name":"service",

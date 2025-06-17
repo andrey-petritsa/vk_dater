@@ -6,7 +6,7 @@ from vk_girl_dater.flirter.deepseek_flirter.deepseek_api import DeepseekApi
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_flirter import DeepseekFlirter
 from vk_girl_dater.usecases.flirt_with_girl_command import FlirtWithGirlCommand
 from vk_girl_dater.vk_date_platform.vk_date_api import VkDateApi
-from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDateApiAdapter
+from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDatePlatform
 
 class FlirtCommandFactory:
     @staticmethod
@@ -15,7 +15,7 @@ class FlirtCommandFactory:
         vk_date_api = VkDateApi()
         vk_api_token = VkDateTokenExtractor.extract()
         vk_date_api.token = vk_api_token
-        command.flirt_platform = VkDateApiAdapter(vk_date_api)
+        command.flirt_platform = VkDatePlatform(vk_date_api)
         deepseek_api = DeepseekApi(deepseek_token)
         command.flirter = DeepseekFlirter(deepseek_api)
         command.chat_repository = InFileChatRepository()
