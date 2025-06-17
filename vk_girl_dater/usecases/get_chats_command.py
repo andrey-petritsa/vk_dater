@@ -1,4 +1,4 @@
-class GetMainScreenCommand:
+class GetChatsCommand:
     def __init__(self, flirt_platform):
         self.flirt_platform = flirt_platform
 
@@ -23,7 +23,7 @@ class GetMainScreenCommand:
 
     def __convert_to_message(self, message):
         if message['user'] == 'bot':
-            name = 'Бот'
+            name = 'bot'
             position = 'left'
         else:
             name = self.__chat['name']

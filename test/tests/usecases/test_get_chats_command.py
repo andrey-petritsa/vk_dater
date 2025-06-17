@@ -1,11 +1,11 @@
 from test.mocks.flirt_platform_spy import FlirtPlatformSpy
-from vk_girl_dater.usecases.get_main_screen_command import GetMainScreenCommand
+from vk_girl_dater.usecases.get_chats_command import GetChatsCommand
 
 
-class TestGetMainScreenCommand:
-    def test_get_main_screen_command(self):
+class TestGetChatsCommand:
+    def test_get_chats_command(self):
         flirt_platform = FlirtPlatformSpy()
-        cmd = GetMainScreenCommand(flirt_platform)
+        cmd = GetChatsCommand(flirt_platform)
         screen = cmd.execute()
 
         e_screen = [
@@ -13,7 +13,7 @@ class TestGetMainScreenCommand:
                 'name': 'Анна',
                 'id': 39277097,
                 'messages': [
-                    {'name': 'Бот', 'text': 'Тест1', 'position': 'left'},
+                    {'name': 'bot', 'text': 'Тест1', 'position': 'left'},
                     {'name': 'Анна', 'text': 'Тест2', 'position': 'right'}
                 ],
             },

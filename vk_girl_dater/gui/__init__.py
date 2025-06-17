@@ -1,4 +1,4 @@
-girls_view_model = [
+chats_view_model = [
     {
         'id': 1,
         'name': 'Анна',
