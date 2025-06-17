@@ -21,7 +21,7 @@ def to_chat(str_chats, promt):
 
     for str_chat in str_chats:
         chat = str_chat.split(":")
-        msg = {'text': chat[0], 'user': chat[1]}
+        msg = {'text': chat[0], 'name': chat[1]}
         messages.append(msg)
 
     return {'messages': messages, 'promt': promt}
