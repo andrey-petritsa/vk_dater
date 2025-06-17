@@ -10,16 +10,13 @@ class ChoiceWidget(QWidget):
         self.button_group = QButtonGroup()
 
         for option in options:
-
-
             radio = QRadioButton()
             self.button_group.addButton(radio)
-
             text_edit = self.__get_text_edit(option)
 
             option_widget = QWidget()
             option_layout = QHBoxLayout()
-            option_layout.addWidget(radio, alignment=Qt.AlignmentFlag.AlignTop)
+            option_layout.addWidget(radio)
             option_layout.addWidget(text_edit)
 
             option_widget.setLayout(option_layout)
