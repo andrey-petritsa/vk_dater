@@ -1,7 +1,6 @@
 
 class StubEventController:
-    @classmethod
-    def handle_event(cls, event):
+    def handle_event(self, event):
         print(event)
 
         if event['name'] == 'show_options':

@@ -6,6 +6,7 @@ from vk_girl_dater.gui.event_controller import EventController
 from vk_girl_dater.gui.message_list_widget import MessageListWidget
 from vk_girl_dater.gui.qt_utils import QtUtils
 from vk_girl_dater.gui.stub_event_controller import StubEventController
+import vk_girl_dater.gui as gui
 
 
 class GirlChatWindow(QDialog):
@@ -87,7 +88,7 @@ class GirlChatWindow(QDialog):
                 'text': message_text, 'chat_id': self.chat['id']
             }
         }
-        StubEventController.handle_event(event)
+        gui.event_controller.handle_event(event)
         self.message_input.clear()
 
     def on_back_clicked(self):
@@ -102,7 +103,7 @@ class GirlChatWindow(QDialog):
             },
         }
 
-        self.options = StubEventController.handle_event(event)
+        self.options = gui.event_controller.handle_event(event)
         self.layout().removeWidget(self.choice_widget)
         self.choice_widget = ChoiceWidget(self.options)
         self.layout().insertWidget(self.layout().count() -1, self.choice_widget)

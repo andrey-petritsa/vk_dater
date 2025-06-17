@@ -1,3 +1,5 @@
+event_controller = None
+
 chats_view_model = [
     {
         'id': 1,
