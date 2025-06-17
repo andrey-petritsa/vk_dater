@@ -82,13 +82,23 @@ class GirlChatWindow(QDialog):
 
     def on_send_clicked(self):
         message_text = self.message_input.toPlainText().strip()
-        event = {
+        send_message_event = {
             'name': 'send_message',
             'context': {
                 'text': message_text, 'user_id': self.chat['id']
             }
         }
-        gui.event_controller.handle_event(event)
+        gui.event_controller.handle_event(send_message_event)
+
+        get_chat_event = {
+            'name': 'get_chat',
+            'context': {
+                'user_id': self.chat['id']
+            }
+        }
+        chat = gui.event_controller.handle_event(get_chat_event)
+
+        
         self.message_input.clear()
 
     def on_back_clicked(self):
