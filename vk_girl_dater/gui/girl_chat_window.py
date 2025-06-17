@@ -25,9 +25,14 @@ class GirlChatWindow(QDialog):
         main_layout.addLayout(self.__get_header())
         main_layout.addWidget(MessageListWidget(self.chat['messages']))
         main_layout.addLayout(self.__get_input_layout())
-        main_layout.addWidget(ChoiceWidget(self.options))
+        main_layout.addWidget(self.__get_choice_widget())
         main_layout.addWidget(self.__get_back_button())
+
         return main_layout
+
+    def __get_choice_widget(self):
+        self.choice_widget = ChoiceWidget(self.options)
+        return self.choice_widget
 
     def __get_input_layout(self):
         input_layout = QHBoxLayout()
