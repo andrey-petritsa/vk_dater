@@ -1,6 +1,7 @@
 import cgi
 
 from playwright.sync_api import sync_playwright
+import vk_girl_dater.utils as utils
 
 class VkDateTokenExtractor:
     @classmethod
@@ -16,6 +17,7 @@ class VkDateTokenExtractor:
         page.on("request", lambda request: cls.__handle_request(cls, request))
         page.goto("https://vk.com/dating")
         page.wait_for_timeout(5000)
+        utils.logger.send_info(f"Токен {cls.token} получен из браузера")
         return cls.token
 
     @staticmethod
