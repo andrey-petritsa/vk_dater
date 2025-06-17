@@ -87,7 +87,7 @@ class GirlChatWindow(QDialog):
                 'text': message_text, 'chat_id': self.chat['id']
             }
         }
-        EventController.handle_event(event)
+        StubEventController.handle_event(event)
         self.message_input.clear()
 
     def on_back_clicked(self):
