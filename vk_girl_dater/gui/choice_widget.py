@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout, QButtonGroup, QHBoxLayout, QRa
 
 class ChoiceWidget(QWidget):
     def __init__(self, options):
+        self.options = options
         super().__init__()
 
         main_layout = QVBoxLayout()
@@ -19,7 +20,7 @@ class ChoiceWidget(QWidget):
 
     def __get_option_layout(self, option):
         radio = QRadioButton()
-        self.button_group.addButton(radio)
+        self.button_group.addButton(radio, self.options.index(option))
         text_edit = self.__get_text_edit(option)
         option_layout = QHBoxLayout()
         option_layout.addWidget(radio)
@@ -34,4 +35,4 @@ class ChoiceWidget(QWidget):
 
     def on_button_clicked(self, button):
         index = self.button_group.id(button)
-        print(f"Выбран вариант {index + 1}")
+        print(self.options[index])
