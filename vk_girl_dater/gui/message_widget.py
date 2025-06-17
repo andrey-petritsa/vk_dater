@@ -8,6 +8,8 @@ class MessageWidget(QWidget):
 
         self.text_label = self.__get_text_label(message)
         layout = QHBoxLayout()
+        if message['position'] == 'right':
+            layout.setContentsMargins(100, 0, 0, 0)
         layout.addWidget(self.text_label)
 
         self.setLayout(layout)
