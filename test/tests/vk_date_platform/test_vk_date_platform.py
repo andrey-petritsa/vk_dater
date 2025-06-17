@@ -5,7 +5,7 @@ from vk_girl_dater.vk_date_platform.vk_date_api_adapter import VkDatePlatform
 
 
 class TestVkDatePlatform:
-    def test_adapt_send_message(self):
+    def test_send_message(self):
         spy = SpyVkDateApi()
         platform = VkDatePlatform(spy)
 
@@ -14,7 +14,7 @@ class TestVkDatePlatform:
 
         assert 'привет как дела?' == spy.last_sended_message['text']
 
-    def test_adapt_get_chats(self):
+    def test_get_chats(self):
         platform = VkDatePlatform(StubVkDateApi())
         chats = platform.get_chats()
 
