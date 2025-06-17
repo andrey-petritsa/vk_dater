@@ -9,13 +9,13 @@ class ChoiceWidget(QWidget):
         main_layout = QVBoxLayout()
         self.button_group = QButtonGroup()
 
-        for i, option in enumerate(options):
+        for option in options:
             option_widget = QWidget()
             option_layout = QHBoxLayout()
             option_widget.setLayout(option_layout)
 
             radio = QRadioButton()
-            self.button_group.addButton(radio, i)
+            self.button_group.addButton(radio)
             option_layout.addWidget(radio, alignment=Qt.AlignmentFlag.AlignTop)
 
             text_edit = self.__get_text_edit(option)
