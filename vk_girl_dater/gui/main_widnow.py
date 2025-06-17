@@ -17,6 +17,3 @@ class MainWindow(QWidget):
         main_layout = QHBoxLayout()
         main_layout.addWidget(girls_list)
         self.setLayout(main_layout)
-
-    def on_item_clicked(self, item):
-        print("Привет")
