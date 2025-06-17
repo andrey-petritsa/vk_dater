@@ -18,15 +18,15 @@ def setup_usecases():
     usecases.get_chats_command = factory.create_get_main_screen_command()
 
 def setup_utils():
-    gui.event_controller = StubEventController()
+    gui.event_controller = EventController()
     utils.logger = ConsoleLogger()
 
 if __name__ == "__main__":
     setup_utils()
-    #setup_usecases()
+    setup_usecases()
     app = QApplication(sys.argv)
-    #chats_view_model = usecases.get_chats_command.execute()
-    chats_view_model = gui.chats_view_model
+    chats_view_model = usecases.get_chats_command.execute()
+    #chats_view_model = gui.chats_view_model
     window = MainWindow(chats_view_model)
     window.show()
     sys.exit(app.exec())
