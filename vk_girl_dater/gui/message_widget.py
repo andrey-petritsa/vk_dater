@@ -24,7 +24,7 @@ class MessageWidget(QWidget):
 
     def __set_size(self):
         self.setMinimumWidth(200)
-        self.setMaximumWidth(300)
+        self.setMinimumHeight(100)
 
     def __get_content_layout(self, message):
         layout = QVBoxLayout(self.content_widget)
