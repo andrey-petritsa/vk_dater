@@ -9,7 +9,7 @@ class ChoiceWidget(QWidget):
         layout = QVBoxLayout()
         self.button_group = QButtonGroup()
 
-        for i, text in enumerate(options):
+        for i, option in enumerate(options):
             option_widget = QWidget()
             option_layout = QHBoxLayout()
             option_widget.setLayout(option_layout)
@@ -18,22 +18,19 @@ class ChoiceWidget(QWidget):
             self.button_group.addButton(radio, i)
             option_layout.addWidget(radio, alignment=Qt.AlignmentFlag.AlignTop)
 
-            text_edit = QTextEdit()
-            text_edit.setPlainText(text)
-            text_edit.setReadOnly(True)
-            text_edit.setMaximumHeight(100)  # Ограничиваем высоту
-            text_edit.setStyleSheet("""
-                QTextEdit {
-                    border: none;
-                    background-color: transparent;
-                }
-            """)
+            text_edit = self.__get_text_edit(option)
             option_layout.addWidget(text_edit)
 
             layout.addWidget(option_widget)
 
         self.button_group.buttonClicked.connect(self.on_button_clicked)
         self.setLayout(layout)
+
+    def __get_text_edit(self, option):
+        text_edit = QTextEdit()
+        text_edit.setPlainText(option)
+        text_edit.setReadOnly(True)
+        return text_edit
 
     def on_button_clicked(self, button):
         index = self.button_group.id(button)
