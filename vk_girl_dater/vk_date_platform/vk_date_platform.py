@@ -28,7 +28,7 @@ class VkDatePlatform:
         for vk_message in history['messages']:
             messages.append(self.__convert_to_message(vk_message))
 
-        chat = {'id': user_id, 'messages': messages, 'name': str(user_id)}
+        chat = {'id':user_id, 'messages':messages, 'name':str(user_id)}
         return chat
 
     def __convert_to_chat(self, vk_api_chat):
@@ -39,9 +39,9 @@ class VkDatePlatform:
 
         user_name = vk_api_chat["user"]["name"]
         return {
-            "id" : user_id,
-            "name" : user_name,
-            "messages": self.__get_messages(user_id)
+            "id":user_id,
+            "name":user_name,
+            "messages":self.__get_messages(user_id)
         }
 
     def __get_messages(self, user_id):
@@ -52,7 +52,6 @@ class VkDatePlatform:
             messages.append(self.__convert_to_message(vk_message))
 
         return messages
-
 
     def __convert_to_message(self, vk_api_message):
         return {
@@ -84,4 +83,11 @@ class VkDatePlatform:
         return chats
 
     def __convert_to_chat_info(self, vk_chat):
-        return {'id': vk_chat['user_id'], 'name': vk_chat['user']['name'], 'is_handled': False, 'avatar_url': vk_chat['user']['preview_url']}
+        chat_info = {
+            'id':vk_chat['user_id'],
+            'name':vk_chat['user']['name'],
+            'is_handled':False,
+            'avatar_url':vk_chat['user']['preview_url']
+        }
+
+        return chat_info

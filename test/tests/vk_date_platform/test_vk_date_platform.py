@@ -40,8 +40,9 @@ class TestVkDatePlatform:
             {
                 'id': 39277097,
                 'name': 'Мариам',
-                'is_handled': False,
-                'avatar_url':self.e_avatar_url
+                'avatar_url':self.e_avatar_url,
+                'last_message_timedelta': {'days': 0, 'hours': 1, 'minutes': 0},
+                'is_answered': True,
             }
         ]
         assert chats_info == e_chats_info
