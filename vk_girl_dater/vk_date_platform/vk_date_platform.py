@@ -1,3 +1,6 @@
+from vk_girl_dater.entity.chat import Chat
+
+
 class VkDatePlatform:
     service_chat = {
         "id":1,
@@ -7,6 +10,7 @@ class VkDatePlatform:
 
     def __init__(self, vk_date_api):
         self.__vk_date_api = vk_date_api
+        self.chat = Chat()
 
     def send_message(self, message):
         self.__vk_date_api.send_message(message)
@@ -83,12 +87,16 @@ class VkDatePlatform:
         return chats
 
     def __convert_to_chat_info(self, vk_chat):
+        last_vk_message = vk_chat['message']
+        last_message = self.__convert_to_message(last_vk_message)
+
         chat_info = {
             'id':vk_chat['user_id'],
             'name':vk_chat['user']['name'],
-            'is_handled':False,
-            'avatar_url':vk_chat['user']['preview_url']
+            'avatar_url':vk_chat['user']['preview_url'],
+            'last_message_timedelta': {'days': 0, 'hours': 1, 'minutes': 0},
+            'is_answered': self.chat.is_answered(last_message),
         }
-        last_message = None
+
 
         return chat_info
