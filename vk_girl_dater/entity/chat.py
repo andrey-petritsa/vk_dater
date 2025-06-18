@@ -1,14 +1,12 @@
 from datetime import datetime
+import vk_girl_dater.utils as utils
 
 from vk_girl_dater.utils.time_provider import TimeProvider
 
 
 class Chat:
-    def __init__(self):
-        self.time_provider = TimeProvider()
-
     def get_last_message_timedelta(self, last_message):
-        now_date = self.time_provider.get_now_date()
+        now_date = utils.time_provider.get_now_date()
         return self.__get_time_delta(last_message['date'], now_date)
 
     def __get_time_delta(self, time1, time2):

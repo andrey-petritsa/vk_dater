@@ -1,7 +1,9 @@
 
 from test.mocks.mock_datas.mocks import StubVkDateApi, SpyVkDateApi
 from test.utils.chat_utils import to_str_one
+from test.utils.stub_time_provider import StubTimeProvider
 from vk_girl_dater.vk_date_platform.vk_date_platform import VkDatePlatform
+import vk_girl_dater.utils as utils
 
 
 class TestVkDatePlatform:
@@ -35,6 +37,7 @@ class TestVkDatePlatform:
     def test_get_chats_info(self):
         platform = VkDatePlatform(StubVkDateApi())
         chats_info = platform.get_chats_info()
+        utils.time_provider = StubTimeProvider()
 
         e_chats_info = [
             {
