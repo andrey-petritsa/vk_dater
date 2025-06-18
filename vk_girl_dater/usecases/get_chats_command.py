@@ -13,7 +13,7 @@ class GetChatsCommand:
     def __convert_chats(self, chats):
         con_chats = []
         for chat in chats:
-            chat['messages'] = self.chat_presenter.to_view_messages(chat)
+            chat = self.chat_presenter.to_view_chat(chat)
             con_chats.append(chat)
         return con_chats
 

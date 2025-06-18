@@ -1,10 +1,11 @@
 class ChatPresenter:
-    def to_view_messages(self, chat):
+    def to_view_chat(self, chat):
         self.__chat = chat
         view_messages = []
         for message in chat['messages']:
             view_messages.append(self.__to_view_messages(message))
-        return view_messages
+        chat['messages'] = view_messages
+        return chat
 
     def __to_view_messages(self, message):
         if message['name'] == 'bot':

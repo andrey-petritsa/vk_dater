@@ -8,5 +8,5 @@ class GetChatCommand:
 
     def execute(self, user_id):
         chat = self.flirt_platform.get_chat(user_id)
-        chat['messages'] = self.chat_presenter.to_view_messages(chat)
+        chat = self.chat_presenter.to_view_chat(chat)
         return chat
