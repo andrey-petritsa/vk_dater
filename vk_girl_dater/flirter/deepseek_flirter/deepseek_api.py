@@ -1,15 +1,10 @@
 import requests
 
-from test.tests.vk_date_platform.settings import auto_mode_promt
 
 
 class DeepseekApi:
     def __init__(self, token):
         self.__token = token
-        self.promt = auto_mode_promt
-
-    def set_promt(self, promt):
-        self.promt = promt
 
     def get_chat_response(self, messages):
         url = "https://api.deepseek.com/chat/completions"
