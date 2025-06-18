@@ -17,3 +17,4 @@ class MessageListWidget(QScrollArea):
         layout.addStretch()
         self.setWidget(container)
         self.setMinimumHeight(600)
+        self.setMaximumWidth(600)
