@@ -1,5 +1,6 @@
 import json
 from test.tests.vk_date_platform.settings import guess_message_constant, auto_mode_promt, hand_mode_promt
+import vk_girl_dater.utils as utils
 
 
 class DeepseekFlirter:
@@ -14,11 +15,19 @@ class DeepseekFlirter:
         response = self.__deepseek_api.get_chat_response(deepseek_messages)
         return self._get_text_from(response)
 
-    def guess_next_message_options(self, chat):
+    def guess_next_message_options(self, chat, try_count=0):
+        if try_count >= 3:
+            raise Exception(f"Флиртер Возвращает ответ не в json формате")
+
         deepseek_messages = self.__get_deepseek_messages(chat, self.promts['hand'])
         response = self.__deepseek_api.get_chat_response(deepseek_messages)
         text = self._get_text_from(response)
-        return json.loads(text)
+
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            utils.logger.send_info(f'Deepseek вернул не json. Повторная попытка... Полученный текст\n{text}')
+            return self.guess_next_message_options(chat, try_count + 1)
 
     def __get_deepseek_messages(self, chat, promt):
         promt_message = {"role":"system", "content":promt}
