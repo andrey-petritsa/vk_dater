@@ -22,3 +22,15 @@ class TestChat:
 
         e_time_delta = {'days': 1,'hours': 6,'minutes': 5}
         assert time_delta == e_time_delta
+
+    def test_is_chat_answered_no_messages(self):
+        chat_data = {'messages': []}
+        chat = Chat(chat_data)
+
+        assert chat.is_answered() == False
+
+    def test_is_chat_answered(self):
+        chat_data = {'messages': [{'name': 'bot'}, {'name': 'girl'}]}
+        chat = Chat(chat_data)
+
+        assert chat.is_answered() == False

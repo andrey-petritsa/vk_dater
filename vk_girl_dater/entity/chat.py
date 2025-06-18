@@ -25,3 +25,13 @@ class Chat:
             'hours':delta.seconds // 3600,
             'minutes':(delta.seconds % 3600) // 60
         }
+
+    def is_answered(self):
+        if len(self.chat['messages']) == 0:
+            return False
+
+        last_message = self.chat['messages'][-1]
+        if last_message['name'] == 'bot':
+            return True
+        else:
+            return False
