@@ -57,6 +57,12 @@ class GirlChatWindow(QDialog):
         send_button.clicked.connect(self.on_send_clicked)
         return send_button
 
+    def __get_update_options_button(self):
+        send_button = QPushButton("Обновить варианты ответов")
+        send_button.setFixedWidth(100)
+        send_button.clicked.connect(self.on_update_options_clicked)
+        return send_button
+
     def __get_message_input(self):
         self.message_input = QTextEdit()
         self.message_input.setFixedHeight(60)
@@ -107,11 +113,7 @@ class GirlChatWindow(QDialog):
 
         self.message_input.clear()
 
-    def on_back_clicked(self):
-        self.accept()
-
-    def showEvent(self, event):
-        super().showEvent(event)
+    def on_update_options_clicked(self):
         event = {
             'name': 'show_options',
             'context': {
@@ -120,6 +122,12 @@ class GirlChatWindow(QDialog):
         }
 
         self.options = gui.event_controller.handle_event(event)
-        self.layout().removeWidget(self.choice_widget)
+
+        if self.choice_widget:
+            self.layout().removeWidget(self.choice_widget)
+
         self.choice_widget = ChoiceWidget(self.options)
         self.layout().insertWidget(self.layout().count() -1, self.choice_widget)
+
+    def on_back_clicked(self):
+        self.accept()
