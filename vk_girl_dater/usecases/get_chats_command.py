@@ -1,9 +1,9 @@
-from vk_girl_dater.presenters.message_presenter import MessagePresenter
+from vk_girl_dater.presenters.chat_presenter import ChatPresenter
 
 
 class GetChatsCommand:
     def __init__(self, flirt_platform):
-        self.message_presenter = MessagePresenter()
+        self.chat_presenter = ChatPresenter()
         self.flirt_platform = flirt_platform
 
     def execute(self):
@@ -13,7 +13,7 @@ class GetChatsCommand:
     def __convert_chats(self, chats):
         con_chats = []
         for chat in chats:
-            chat['messages'] = self.message_presenter.to_view_messages(chat)
+            chat['messages'] = self.chat_presenter.to_view_messages(chat)
             con_chats.append(chat)
         return con_chats
 

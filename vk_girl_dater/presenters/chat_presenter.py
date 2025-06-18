@@ -1,4 +1,4 @@
-class MessagePresenter:
+class ChatPresenter:
     def to_view_messages(self, chat):
         self.__chat = chat
         view_messages = []
