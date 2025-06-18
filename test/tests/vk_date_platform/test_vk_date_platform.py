@@ -5,6 +5,9 @@ from vk_girl_dater.vk_date_platform.vk_date_platform import VkDatePlatform
 
 
 class TestVkDatePlatform:
+    def setup_method(self):
+        self.e_avatar_url = '39277097https://sun9-west.userapi.com/sun9-62/s/v1/if2/1VPr6H_XuMyMUBIGgKXueFg4vXsbD0BnBqVTTO_24oxioDhU368Q_nx9_oDaXSWPbA0GWNBYjjAj1_4d0k77U2d2iLyiOw.jpg?quality=90&size=108x192'
+
     def test_send_message(self):
         spy = SpyVkDateApi()
         platform = VkDatePlatform(spy)
@@ -26,3 +29,21 @@ class TestVkDatePlatform:
         chat = platform.get_chat(user_id)
 
         assert to_str_one(chat) == 1
+
+
+
+    def test_get_chats_info(self):
+        platform = VkDatePlatform(StubVkDateApi())
+        chats_info = platform.get_chats_info()
+
+
+        e_chats_info = [
+            {
+                'id': 39277097,
+                'name': 'Мариам',
+                'is_handled': False,
+                'avatar_url':self.e_avatar_url
+            }
+        ]
+        assert chats_info == e_chats_info
+

@@ -72,3 +72,16 @@ class VkDatePlatform:
 
     def __is_invalid_chat(self, chat):
         return chat['type'] == 'invalid'
+
+    def get_chats_info(self):
+        get_chats_response = self.__vk_date_api.get_chats()
+        get_chats_response = get_chats_response.json()
+        chats = []
+        for vk_chat in get_chats_response["chats"]:
+            if not self.__is_service_chat(vk_chat) and not self.__is_invalid_chat(vk_chat):
+                chats.append(self.__convert_to_chat_info(vk_chat))
+
+        return chats
+
+    def __convert_to_chat_info(self, vk_chat):
+        return {'id': vk_chat['user_id'], 'name': vk_chat['user']['name'], 'is_handled': False, 'avatar_url': vk_chat['user']['preview_url']}
