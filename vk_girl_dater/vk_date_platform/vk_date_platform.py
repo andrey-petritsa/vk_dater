@@ -89,5 +89,6 @@ class VkDatePlatform:
             'is_handled':False,
             'avatar_url':vk_chat['user']['preview_url']
         }
+        last_message = None
 
         return chat_info
