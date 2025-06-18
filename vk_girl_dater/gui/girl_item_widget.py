@@ -8,12 +8,10 @@ class GirlItemWidget(QWidget):
     def __init__(self, chat_info_view):
         super().__init__()
         
-        name_label = QLabel(chat_info_view['name'])
-        avatar_label = self._create_avatar_label(chat_info_view)
-
         layout = QHBoxLayout()
-        layout.addWidget(avatar_label)
-        layout.addWidget(name_label)
+        layout.addWidget(self._create_avatar_label(chat_info_view))
+        layout.addWidget(QLabel(chat_info_view['name']))
+        layout.addWidget(self.__create_message_hint_label(chat_info_view))
         layout.addStretch()
         
         self.setLayout(layout)
@@ -35,3 +33,7 @@ class GirlItemWidget(QWidget):
 
         avatar_label.setPixmap(pixmap)
         return avatar_label
+
+    def __create_message_hint_label(self, chat_info_view):
+        label = QLabel(chat_info_view['last_message_hint'])
+        return label
