@@ -20,6 +20,9 @@ class GirlChatWindow(QDialog):
 
         self.setWindowTitle(f"Чат с {self.chat['name']}")
         self.setGeometry(100, 100, 500, 600)
+
+    def showEvent(self, event):
+        super().showEvent(event)
         QtUtils.center(self)
 
     def __get_main_layout(self):
@@ -129,6 +132,7 @@ class GirlChatWindow(QDialog):
 
         self.choice_widget = ChoiceWidget(self.options)
         self.layout().insertWidget(self.layout().count() -1, self.choice_widget)
+        
 
     def on_back_clicked(self):
         self.accept()
