@@ -17,6 +17,6 @@ def setup_utils():
 if __name__ == "__main__":
     setup_utils()
     app = QApplication(sys.argv)
-    window = MainWindow(gui.chats_info)
+    window = MainWindow(gui.chats_info_view)
     window.show()
     sys.exit(app.exec())
