@@ -41,7 +41,7 @@ class TestVkDatePlatform:
                 'id': 39277097,
                 'name': 'Мариам',
                 'avatar_url':self.e_avatar_url,
-                'last_message_timedelta': {'days': 0, 'hours': 1, 'minutes': 0},
+                'last_message_timedelta': {'days': 131, 'hours': 6, 'minutes': 16},
                 'is_answered': True,
             }
         ]
