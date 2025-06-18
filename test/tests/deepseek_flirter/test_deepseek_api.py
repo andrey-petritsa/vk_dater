@@ -10,6 +10,11 @@ def is_json(text):
     except json.JSONDecodeError:
         return False
 
+def get_text_from(response):
+    response = response.json()
+    text = response['choices'][0]['message']['content']
+    return text
+
 
 class TestDeepseekApi:
     def test_get_chat_response(self):
@@ -33,6 +38,7 @@ class TestDeepseekApi:
             {"role": "user", "content": "Все хорошо, а у тебя?"}
         ]
         response = api.get_chat_response(messages)
+        text = get_text_from(response)
 
         assert response.status_code == 200
-        assert is_json(response.text) == True
+        assert is_json(text) == True
