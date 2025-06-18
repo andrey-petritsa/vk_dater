@@ -20,6 +20,7 @@ class GirlChatWindow(QDialog):
 
         self.setWindowTitle(f"Чат с {self.chat['name']}")
         self.setGeometry(100, 100, 500, 600)
+        self.setMinimumWidth(1200)
 
     def showEvent(self, event):
         super().showEvent(event)
