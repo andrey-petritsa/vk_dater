@@ -16,3 +16,12 @@ class ChatPresenter:
             position = 'right'
         msg = {'name':name, 'text':message['text'], 'position':position}
         return msg
+
+    def to_view_chat_info(self, chat_info):
+        return {
+            'id': chat_info['id'],
+            'name': chat_info['name'],
+            'avatar_url':chat_info['avatar_url'],
+            'last_message_hint': '137 дней',
+            'is_answered_status_icon': '👀',
+        }
