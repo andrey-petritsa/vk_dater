@@ -28,6 +28,7 @@ class GirlChatWindow(QDialog):
         main_layout.addWidget(self.__get_message_list(self.chat['messages']))
         main_layout.addLayout(self.__get_input_layout())
         main_layout.addWidget(self.__get_choice_widget())
+        main_layout.addWidget(self.__get_update_options_button())
         main_layout.addWidget(self.__get_back_button())
 
         return main_layout
@@ -59,7 +60,6 @@ class GirlChatWindow(QDialog):
 
     def __get_update_options_button(self):
         send_button = QPushButton("Обновить варианты ответов")
-        send_button.setFixedWidth(100)
         send_button.clicked.connect(self.on_update_options_clicked)
         return send_button
 
@@ -107,6 +107,7 @@ class GirlChatWindow(QDialog):
             }
         }
         chat = gui.event_controller.handle_event(get_chat_event)
+        self.chat = chat
         self.layout().removeWidget(self.message_list)
         message_list = self.__get_message_list(chat['messages'])
         self.layout().insertWidget(1, message_list)
