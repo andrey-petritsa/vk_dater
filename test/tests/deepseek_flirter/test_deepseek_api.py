@@ -19,7 +19,6 @@ def get_text_from(response):
 class TestDeepseekApi:
     def test_get_chat_response(self):
         api = DeepseekApi(deepseek_token)
-        api.set_promt("Ты полезный помошник")
         messages = [
             {"role": "user", "content": "Привет!"},
             {"role": "assistant", "content": "Привет! Как дела?"},
