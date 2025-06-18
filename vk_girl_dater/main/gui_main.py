@@ -20,11 +20,16 @@ def setup_usecases():
     usecases.get_chat_command = factory.create_get_chat_command()
     usecases.get_chats_info_command = factory.create_get_chats_info_command()
 
-def get_chat_info_view():
+def get_chat_info_views():
     presenter = ChatPresenter()
-    chat_info = usecases.get_chats_info_command.execute()
-    chat_info_view = presenter.to_view_chat_info(chat_info)
-    return chat_info_view
+    chat_infos = usecases.get_chats_info_command.execute()
+
+
+    chat_info_views = []
+    for chat_info in chat_infos:
+        chat_info_view = presenter.to_view_chat_info(chat_info)
+        chat_info_views.append(chat_info_view)
+    return chat_info_views
 
 def setup_utils():
     gui.event_controller = EventController()
@@ -34,7 +39,7 @@ if __name__ == "__main__":
     setup_utils()
     setup_usecases()
     app = QApplication(sys.argv)
-    chats_info_view = get_chat_info_view()
-    window = MainWindow(chats_info_view)
+    chats_info_views = get_chat_info_views()
+    window = MainWindow(chats_info_views)
     window.show()
     sys.exit(app.exec())
