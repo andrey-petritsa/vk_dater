@@ -36,7 +36,6 @@ class TestVkDatePlatform:
         platform = VkDatePlatform(StubVkDateApi())
         chats_info = platform.get_chats_info()
 
-
         e_chats_info = [
             {
                 'id': 39277097,
