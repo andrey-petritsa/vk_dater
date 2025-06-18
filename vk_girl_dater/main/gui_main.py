@@ -8,6 +8,7 @@ import vk_girl_dater.utils as utils
 import vk_girl_dater.usecases as usecases
 from vk_girl_dater.gui.stub_event_controller import StubEventController
 from vk_girl_dater.main.usecase_factory import UsecaseFactory
+from vk_girl_dater.presenters.chat_presenter import ChatPresenter
 from vk_girl_dater.utils.console_logger import ConsoleLogger
 
 
@@ -19,6 +20,12 @@ def setup_usecases():
     usecases.get_chat_command = factory.create_get_chat_command()
     usecases.get_chats_info_command = factory.create_get_chats_info_command()
 
+def get_chat_info_view():
+    presenter = ChatPresenter()
+    chat_info = usecases.get_chats_info_command.execute()
+    chat_info_view = presenter.to_view_chat_info(chat_info)
+    return chat_info_view
+
 def setup_utils():
     gui.event_controller = EventController()
     utils.logger = ConsoleLogger()
@@ -27,7 +34,7 @@ if __name__ == "__main__":
     setup_utils()
     setup_usecases()
     app = QApplication(sys.argv)
-    chats_info = usecases.get_chats_info_command.execute()
-    window = MainWindow(chats_info)
+    chats_info_view = get_chat_info_view()
+    window = MainWindow(chats_info_view)
     window.show()
     sys.exit(app.exec())
