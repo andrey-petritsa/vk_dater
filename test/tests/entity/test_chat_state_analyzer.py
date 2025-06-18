@@ -1,4 +1,4 @@
-from vk_girl_dater.usecases.chat_state_analyzer import ChatStateAnalyzer
+from vk_girl_dater.entity.chat_state_analyzer import ChatStateAnalyzer
 
 
 class TestChatStateAnalyzer:
