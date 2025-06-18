@@ -31,8 +31,8 @@ class TestDeepseekApi:
 
     def test_get_chat_response_as_json(self):
         api = DeepseekApi(deepseek_token)
-        api.set_promt(hand_mode_promt)
         messages = [
+            {"role": "system", "content": hand_mode_promt},
             {"role": "user", "content": "Привет!"},
             {"role": "assistant", "content": "Привет! Как дела?"},
             {"role": "user", "content": "Все хорошо, а у тебя?"}
