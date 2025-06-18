@@ -4,15 +4,10 @@ from vk_girl_dater.utils.time_provider import TimeProvider
 
 
 class Chat:
-    def __init__(self, chat):
+    def __init__(self):
         self.time_provider = TimeProvider()
-        self.chat = chat
 
-    def get_last_message_timedelta(self):
-        if len(self.chat['messages']) == 0:
-            return {'days': 0,'hours': 0,'minutes': 0}
-
-        last_message = self.chat['messages'][-1]
+    def get_last_message_timedelta(self, last_message):
         now_date = self.time_provider.get_now_date()
         return self.__get_time_delta(last_message['date'], now_date)
 
@@ -26,11 +21,7 @@ class Chat:
             'minutes':(delta.seconds % 3600) // 60
         }
 
-    def is_answered(self):
-        if len(self.chat['messages']) == 0:
-            return False
-
-        last_message = self.chat['messages'][-1]
+    def is_answered(self, last_message):
         if last_message['name'] == 'bot':
             return True
         else:
