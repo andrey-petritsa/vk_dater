@@ -18,10 +18,15 @@ class ChatPresenter:
         return msg
 
     def to_view_chat_info(self, chat_info):
+        if chat_info['is_answered']:
+            is_answered_status_icon = '👀'
+        else:
+            is_answered_status_icon = '🙈'
+
         return {
             'id': chat_info['id'],
             'name': chat_info['name'],
             'avatar_url':chat_info['avatar_url'],
             'last_message_hint': '137 дней',
-            'is_answered_status_icon': '👀',
+            'is_answered_status_icon': is_answered_status_icon,
         }
