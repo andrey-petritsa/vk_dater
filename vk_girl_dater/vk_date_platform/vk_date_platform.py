@@ -28,7 +28,7 @@ class VkDatePlatform:
         for vk_message in history['messages']:
             messages.append(self.__convert_to_message(vk_message))
 
-        chat = {'id': user_id, 'messages': messages, 'name': user_id}
+        chat = {'id': user_id, 'messages': messages, 'name': str(user_id)}
         return chat
 
     def __convert_to_chat(self, vk_api_chat):
