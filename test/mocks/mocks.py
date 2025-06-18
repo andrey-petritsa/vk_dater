@@ -54,6 +54,19 @@ class SpyFlirtPlatform:
 
         return self.chats
 
+    def get_chats_info(self):
+        r = f'get_chats_info()'
+        self.requests.append(r)
+
+        return [
+            {
+                'id': 1,
+                'name': 'Анна',
+                'is_handled': False,
+                'avatar_url':'avatar_url'
+            }
+        ]
+
 class SpyChatRepository:
     def __init__(self):
         self.is_save_called = False
