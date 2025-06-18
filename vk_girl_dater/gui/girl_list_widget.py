@@ -12,14 +12,14 @@ class GirlListWidget(QListWidget):
         self.chats_info = chats_info
         self.itemClicked.connect(self.on_item_clicked)
         for chat_info in chats_info:
-            self.add_girl(chat_info['name'])
+            self.add_girl(chat_info)
 
-    def add_girl(self, name):
+    def add_girl(self, chat_info):
         item = QListWidgetItem(self)
-        widget = GirlItemWidget(name)
+        widget = GirlItemWidget(chat_info['name'])
         item.setSizeHint(widget.sizeHint())
         self.setItemWidget(item, widget)
-        item.setData(Qt.ItemDataRole.UserRole, name)
+        item.setData(Qt.ItemDataRole.UserRole, chat_info['name'])
 
     def on_item_clicked(self, item):
         main_window = self.parent()
