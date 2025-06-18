@@ -4,6 +4,7 @@ from test.utils.vk_date_token_extractor import VkDateTokenExtractor
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_api import DeepseekApi
 from vk_girl_dater.flirter.deepseek_flirter.deepseek_flirter import DeepseekFlirter
 from vk_girl_dater.usecases.get_chats_command import GetChatsCommand
+from vk_girl_dater.usecases.get_chats_info_command import GetChatsInfoCommand
 from vk_girl_dater.usecases.get_message_options_command import GetMessageOptionsCommand
 from vk_girl_dater.usecases.send_message_command import SendMessageCommand
 from vk_girl_dater.vk_date_platform.vk_date_api import VkDateApi
@@ -32,4 +33,8 @@ class UsecaseFactory:
 
     def create_get_chat_command(self):
         cmd = GetChatCommand(self.platform)
+        return cmd
+
+    def create_get_chats_info_command(self):
+        cmd = GetChatsInfoCommand(self.platform)
         return cmd

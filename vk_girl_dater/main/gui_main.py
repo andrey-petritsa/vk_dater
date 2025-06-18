@@ -17,6 +17,7 @@ def setup_usecases():
     usecases.send_message_command = factory.create_send_message_command()
     usecases.get_chats_command = factory.create_get_main_screen_command()
     usecases.get_chat_command = factory.create_get_chat_command()
+    usecases.get_chats_info_command = factory.create_get_chats_info_command()
 
 def setup_utils():
     gui.event_controller = EventController()
@@ -26,7 +27,7 @@ if __name__ == "__main__":
     setup_utils()
     setup_usecases()
     app = QApplication(sys.argv)
-    chats_view_model = usecases.get_chats_command.execute()
-    window = MainWindow(chats_view_model)
+    chats_info = usecases.get_chats_info_command.execute()
+    window = MainWindow(chats_info)
     window.show()
     sys.exit(app.exec())
