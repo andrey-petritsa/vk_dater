@@ -16,7 +16,7 @@ class GirlListWidget(QListWidget):
 
     def add_girl(self, chat_info):
         item = QListWidgetItem(self)
-        widget = GirlItemWidget(chat_info['name'])
+        widget = GirlItemWidget(chat_info)
         item.setSizeHint(widget.sizeHint())
         self.setItemWidget(item, widget)
         item.setData(Qt.ItemDataRole.UserRole, chat_info['name'])

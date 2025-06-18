@@ -4,11 +4,11 @@ from PyQt6.QtWidgets import QWidget, QLabel, QHBoxLayout
 
 
 class GirlItemWidget(QWidget):
-    def __init__(self, name):
+    def __init__(self, chat_info):
         super().__init__()
         
-        name_label = QLabel(name)
-        avatar_label = self._create_avatar_label()
+        name_label = QLabel(chat_info['name'])
+        avatar_label = self._create_avatar_label(chat_info)
 
         layout = QHBoxLayout()
         layout.addWidget(avatar_label)
@@ -17,7 +17,7 @@ class GirlItemWidget(QWidget):
         
         self.setLayout(layout)
 
-    def _create_avatar_label(self):
+    def _create_avatar_label(self, chat_info):
         size = 50
         avatar_label = QLabel()
         avatar_label.setFixedSize(size, size)
