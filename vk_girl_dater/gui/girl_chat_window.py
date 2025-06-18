@@ -26,13 +26,22 @@ class GirlChatWindow(QDialog):
         QtUtils.center(self)
 
     def __get_main_layout(self):
-        main_layout = QVBoxLayout()
-        main_layout.addLayout(self.__get_header())
-        main_layout.addWidget(self.__get_message_list(self.chat['messages']))
-        main_layout.addLayout(self.__get_input_layout())
-        main_layout.addWidget(self.__get_choice_widget())
-        main_layout.addWidget(self.__get_update_options_button())
-        main_layout.addWidget(self.__get_back_button())
+
+
+        chat_layout = QVBoxLayout()
+        chat_layout.addLayout(self.__get_header())
+        chat_layout.addWidget(self.__get_message_list(self.chat['messages']))
+        chat_layout.addLayout(self.__get_input_layout())
+
+        chat_layout.addWidget(self.__get_back_button())
+
+        options_layout = QVBoxLayout()
+        options_layout.addWidget(self.__get_choice_widget())
+        options_layout.addWidget(self.__get_update_options_button())
+
+        main_layout = QHBoxLayout()
+        main_layout.addLayout(chat_layout)
+        main_layout.addLayout(options_layout)
 
         return main_layout
 
