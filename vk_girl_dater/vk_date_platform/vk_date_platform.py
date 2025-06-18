@@ -58,7 +58,7 @@ class VkDatePlatform:
         return {
             'text':vk_api_message['content'],
             'date':vk_api_message['created_at'],
-            'user':self.__get_user_name(vk_api_message)
+            'name':self.__get_user_name(vk_api_message)
         }
 
     def __get_user_name(self, message):
