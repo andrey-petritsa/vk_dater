@@ -36,15 +36,16 @@ class TestVkDatePlatform:
 
     def test_get_chats_info(self):
         platform = VkDatePlatform(StubVkDateApi())
-        chats_info = platform.get_chats_info()
         utils.time_provider = StubTimeProvider()
+        utils.time_provider.now_date = '2025-06-25T12:00:00.211Z'
+        chats_info = platform.get_chats_info()
 
         e_chats_info = [
             {
                 'id': 39277097,
                 'name': 'Мариам',
                 'avatar_url':self.e_avatar_url,
-                'last_message_timedelta': {'days': 131, 'hours': 6, 'minutes': 16},
+                'last_message_timedelta': {'days': 137, 'hours': 23, 'minutes': 43},
                 'is_answered': True,
             }
         ]

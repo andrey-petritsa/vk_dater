@@ -1,8 +1,6 @@
 from datetime import datetime
 import vk_girl_dater.utils as utils
 
-from vk_girl_dater.utils.time_provider import TimeProvider
-
 
 class Chat:
     def get_last_message_timedelta(self, last_message):
