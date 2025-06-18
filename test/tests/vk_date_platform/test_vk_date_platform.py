@@ -6,7 +6,7 @@ from vk_girl_dater.vk_date_platform.vk_date_platform import VkDatePlatform
 
 class TestVkDatePlatform:
     def setup_method(self):
-        self.e_avatar_url = '39277097https://sun9-west.userapi.com/sun9-62/s/v1/if2/1VPr6H_XuMyMUBIGgKXueFg4vXsbD0BnBqVTTO_24oxioDhU368Q_nx9_oDaXSWPbA0GWNBYjjAj1_4d0k77U2d2iLyiOw.jpg?quality=90&size=108x192'
+        self.e_avatar_url = 'https://sun9-west.userapi.com/sun9-62/s/v1/if2/1VPr6H_XuMyMUBIGgKXueFg4vXsbD0BnBqVTTO_24oxioDhU368Q_nx9_oDaXSWPbA0GWNBYjjAj1_4d0k77U2d2iLyiOw.jpg?quality=90&size=108x192'
 
     def test_send_message(self):
         spy = SpyVkDateApi()
