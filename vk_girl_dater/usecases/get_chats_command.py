@@ -22,7 +22,7 @@ class GetChatsCommand:
         return messages
 
     def __convert_to_message(self, message):
-        if message['user'] == 'bot':
+        if message['name'] == 'bot':
             name = 'bot'
             position = 'left'
         else:

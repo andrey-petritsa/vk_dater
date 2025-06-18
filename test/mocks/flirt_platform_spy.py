@@ -11,8 +11,8 @@ class FlirtPlatformSpy:
             {
                 'id':39277097,
                 'messages':[
-                    {'date':'2025-01-27T16:14:21.211Z', 'text':'Тест1', 'user':'bot'},
-                    {'date':'2025-01-27T16:14:21.211Z', 'text':'Тест2', 'user':'girl'}
+                    {'date':'2025-01-27T16:14:21.211Z', 'text':'Тест1', 'name':'bot'},
+                    {'date':'2025-01-27T16:14:21.211Z', 'text':'Тест2', 'name':'girl'}
                 ],
                 'name':'Анна'
             }
@@ -23,8 +23,8 @@ class FlirtPlatformSpy:
         return {
             'id':user_id,
             'messages':[
-                {'date':'2025-01-27T16:14:21.211Z', 'text':'Тест1', 'user':'bot'},
-                {'date':'2025-01-27T16:14:21.211Z', 'text':'Тест2', 'user':'girl'}
+                {'date':'2025-01-27T16:14:21.211Z', 'text':'Тест1', 'name':'bot'},
+                {'date':'2025-01-27T16:14:21.211Z', 'text':'Тест2', 'name':'girl'}
             ],
             'name':'Анна'
         }
