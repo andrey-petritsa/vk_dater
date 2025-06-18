@@ -12,13 +12,13 @@ class Chat:
         return self.__get_time_delta(last_message['date'], now_date)
 
     def __get_time_delta(self, time1, time2):
-        dt1 = datetime.strptime(time1, '%Y-%m-%dT%H:%M:%S')
-        dt2 = datetime.strptime(time2, '%Y-%m-%dT%H:%M:%S')
+        dt1 = datetime.strptime(time1, '%Y-%m-%dT%H:%M:%S.%fZ')
+        dt2 = datetime.strptime(time2, '%Y-%m-%dT%H:%M:%S.%fZ')
         delta = dt2 - dt1
         return {
-            'days':delta.days,
-            'hours':delta.seconds // 3600,
-            'minutes':(delta.seconds % 3600) // 60
+            'days': delta.days,
+            'hours': delta.seconds // 3600,
+            'minutes': (delta.seconds % 3600) // 60
         }
 
     def is_answered(self, last_message):

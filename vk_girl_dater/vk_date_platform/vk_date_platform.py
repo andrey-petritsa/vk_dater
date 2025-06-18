@@ -94,7 +94,7 @@ class VkDatePlatform:
             'id':vk_chat['user_id'],
             'name':vk_chat['user']['name'],
             'avatar_url':vk_chat['user']['preview_url'],
-            'last_message_timedelta': {'days': 0, 'hours': 1, 'minutes': 0},
+            'last_message_timedelta': self.chat.get_last_message_timedelta(last_message),
             'is_answered': self.chat.is_answered(last_message),
         }
 
