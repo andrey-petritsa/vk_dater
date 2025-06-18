@@ -63,7 +63,9 @@ class SpyFlirtPlatform:
                 'id': 1,
                 'name': 'Анна',
                 'is_handled': False,
-                'avatar_url':'avatar_url'
+                'avatar_url':'avatar_url',
+                'last_message_timedelta': {'days': 137, 'hours': 23, 'minutes': 43},
+                'is_answered': True,
             }
         ]
 
