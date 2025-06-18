@@ -12,6 +12,8 @@ class GirlItemWidget(QWidget):
         layout.addWidget(self._create_avatar_label(chat_info_view))
         layout.addWidget(QLabel(chat_info_view['name']))
         layout.addWidget(self.__create_message_hint_label(chat_info_view))
+        layout.addWidget(QLabel(chat_info_view['is_answered_status_icon']))
+
         layout.addStretch()
         
         self.setLayout(layout)
