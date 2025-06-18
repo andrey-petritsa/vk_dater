@@ -7,28 +7,28 @@ from vk_girl_dater.gui.girl_chat_window import GirlChatWindow
 
 
 class GirlListWidget(QListWidget):
-    def __init__(self, chats_info):
+    def __init__(self, chats_info_view):
         super().__init__()
-        self.chats_info = chats_info
+        self.chats_info_view = chats_info_view
         self.itemClicked.connect(self.on_item_clicked)
-        for chat_info in chats_info:
-            self.add_girl(chat_info)
+        for chat_info_view in chats_info_view:
+            self.add_girl(chat_info_view)
 
-    def add_girl(self, chat_info):
+    def add_girl(self, chat_info_view):
         item = QListWidgetItem(self)
-        widget = GirlItemWidget(chat_info)
+        widget = GirlItemWidget(chat_info_view)
         item.setSizeHint(widget.sizeHint())
         self.setItemWidget(item, widget)
-        item.setData(Qt.ItemDataRole.UserRole, chat_info['name'])
+        item.setData(Qt.ItemDataRole.UserRole, chat_info_view['name'])
 
     def on_item_clicked(self, item):
         main_window = self.parent()
         index = self.row(item)
-        chat_info = self.chats_info[index]
+        chat_info_view = self.chats_info_view[index]
         event = {
             'name': 'get_chat',
             'context': {
-                'user_id': chat_info['id']
+                'user_id': chat_info_view['id']
             }
         }
         chat = gui.event_controller.handle_event(event)

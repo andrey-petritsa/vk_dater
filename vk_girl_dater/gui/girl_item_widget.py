@@ -5,11 +5,11 @@ from PyQt6.QtWidgets import QWidget, QLabel, QHBoxLayout
 
 
 class GirlItemWidget(QWidget):
-    def __init__(self, chat_info):
+    def __init__(self, chat_info_view):
         super().__init__()
         
-        name_label = QLabel(chat_info['name'])
-        avatar_label = self._create_avatar_label(chat_info)
+        name_label = QLabel(chat_info_view['name'])
+        avatar_label = self._create_avatar_label(chat_info_view)
 
         layout = QHBoxLayout()
         layout.addWidget(avatar_label)
@@ -18,13 +18,13 @@ class GirlItemWidget(QWidget):
         
         self.setLayout(layout)
 
-    def _create_avatar_label(self, chat_info):
+    def _create_avatar_label(self, chat_info_view):
         size = 200
         avatar_label = QLabel()
         avatar_label.setFixedSize(size, size)
 
-        if 'avatar_url' in chat_info and chat_info['avatar_url']:
-            response = requests.get(chat_info['avatar_url'])
+        if 'avatar_url' in chat_info_view and chat_info_view['avatar_url']:
+            response = requests.get(chat_info_view['avatar_url'])
             image_data = QByteArray(response.content)
             pixmap = QPixmap()
             pixmap.loadFromData(image_data)
