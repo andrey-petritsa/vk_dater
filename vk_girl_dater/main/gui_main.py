@@ -24,7 +24,6 @@ def get_chat_info_views():
     presenter = ChatPresenter()
     chat_infos = usecases.get_chats_info_command.execute()
 
-
     chat_info_views = []
     for chat_info in chat_infos:
         chat_info_view = presenter.to_view_chat_info(chat_info)
