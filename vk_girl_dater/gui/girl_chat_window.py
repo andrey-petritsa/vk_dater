@@ -39,6 +39,7 @@ class GirlChatWindow(QDialog):
         options_layout = QVBoxLayout()
         options_layout.addWidget(self.__get_choice_widget())
         options_layout.addWidget(self.__get_update_options_button())
+        self.options_layout =  options_layout
 
         main_layout = QHBoxLayout()
         main_layout.addLayout(chat_layout)
@@ -141,7 +142,7 @@ class GirlChatWindow(QDialog):
             self.layout().removeWidget(self.choice_widget)
 
         self.choice_widget = ChoiceWidget(self.options)
-        self.layout().insertWidget(self.layout().count() -1, self.choice_widget)
+        self.options_layout.insertWidget(self.layout().count() -1, self.choice_widget)
         
 
     def on_back_clicked(self):

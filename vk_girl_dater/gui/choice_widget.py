@@ -31,6 +31,7 @@ class ChoiceWidget(QWidget):
         text_edit = QTextEdit()
         text_edit.setPlainText(option)
         text_edit.setMinimumWidth(200)
+        text_edit.setMaximumHeight(100)
         text_edit.setReadOnly(True)
         return text_edit
 
