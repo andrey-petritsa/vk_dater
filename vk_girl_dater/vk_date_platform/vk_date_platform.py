@@ -1,5 +1,4 @@
 from vk_girl_dater.entity.chat import Chat
-from datetime import datetime
 
 
 class VkDatePlatform:
@@ -103,7 +102,3 @@ class VkDatePlatform:
 
 
         return chat_info
-
-        def sort_chats(self, chats):
-
-    return sorted(chats, key=lambda x:(x['last_message_timedelta'], -int(x['is_answered'])))
